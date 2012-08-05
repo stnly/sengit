@@ -27,14 +27,49 @@ The way the refinements are carried out in the model should be in a way that the
 The model should be readable by humans. A model that looks complicated and impressive might not be a good model. Don't confuse complexity with quality. Readability of naming convention is also very important.
 
 ##Invariants & Theorems
+###group 4
+
+###group 7
+
+###group 11
+
+###group 3
 
 ##Correctness & Consistency
+###group 4
+
+###group 7
+
+###group 11
+
+###group 3
 
 ##Concrete
+###group 4
+
+###group 7
+
+###group 11
+
+###group 3
 
 ##Machine Sequence
+###group 4
+
+###group 7
+
+###group 11
+
+###group 3
 
 ##Clarity
+###group 4
+
+###group 7
+
+###group 11
+
+###group 3
 
 #"New" Specification Summary
 
