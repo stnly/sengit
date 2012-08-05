@@ -1,0 +1,20 @@
+#To check current status of local repository:
+git status
+
+#To add all files to staging area:
+git add .
+
+#To commit files added to staging area with commit message:
+git commit -m "commit message"
+
+#To add all files and commit in one command:
+git commit -a -m "commit message"
+
+#To push files up to remote repository:
+git push
+
+#To pull changes from remote repository:
+git pull
+
+#To show all previous commits in this entire git repository:
+git show
