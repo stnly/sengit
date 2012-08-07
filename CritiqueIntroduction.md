@@ -1,4 +1,4 @@
-latex input:		mmd-memoir-header
+﻿latex input:		mmd-memoir-header
 Title:			Specification Critique
 Author:			Group 03
 Email:			se2020.grp03@cse.unsw.edu.au
@@ -46,12 +46,16 @@ The model should be readable by humans. A model that looks complicated and impre
 
 ##Concrete
 ###group 4
-
+This group demonstrated good abstract design for their requirements. As we can see, the product requirements only describe the behaviour of the system instead of depicting specific stuff on how the requirement will be accomplish. However in event-B, their way of constructing the user access is too concrete because they have to specify which user it is in each function. Looking at figure 1 (appendix A), they just model the behaviour of what the system is going to do without any specific information that suggest how the system would meet the goal. For example in appendix B.1, the function Set Threshold contains the guard specify the user have to be a manager in order to use this function. 
 ###group 7
-
+In appendix C, the product requirements are too specific. They should move those requirements down or make them more abstract. For example, PD-2.5.3 states that items are placed under the same classification so this will tell where this item should be placed. This requirement should be replaced as the system can handle item storage. As for the Event-B, they have too many guards in each function that would make their model too specific. For instance in appendix D.1, the function Add Product to Warehouse has a lot of guards while there are only two actions.  They should delegate the invariants at each machine instead of within each function. Then in appendix D.2, the function contains too many details which would make the model too concrete. The guard that restricts the staff from making the transaction because the registrar doesn’t have enough money to give the changes is a huge problem for the staff. The staff would have to go get the changes from somewhere else then come back to notify the system that the registrar got more money then it could process the transaction. 
 ###group 11
-
+Referring to appendix E, the requirement describes how it would achieve the goal making it too specific for a product requirement. The requirement should be more abstract like the system can handle replacement orders or else you can’t extend that product requirement further down to design level. Looking at this simple function Give Change in appendix F, the function has too many guards for only one operation. More guards should be delegated at the top of the machine and the invariants could be more general to make the model more abstract. 
 ###group 3
+In appendix G, the requirement is specific to list out the attribute that the system would store. It can just be the system can record product details and then extends that requirement down to design level where you can then state that it can store these types of attributes.  Referencing to appendix H, the function contains too many guards that would make the function too specific. The function could be better to rearrange the guards out of the functions. 
+
+Overall, all the groups have some parts that are well model and some parts are too specific. Out of all the groups, group 4 have the most abstract model. Our group (group 3) is place in the middle of the bunch. Group 11 have too many details in some of the functions making it to cause too many errors in the model. 
+
 
 ##Machine Sequence
 
