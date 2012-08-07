@@ -16,9 +16,6 @@ latex footer:		mmd-memoir-footer
 ##Introduction
 ###Invariants & Theorems
 Invariants should express all constraints on the machine that are important to the integrity of the system. They are not merely used as a method to declare variable types. The invariants should be used to specify the semantic relationships between variables. It is also said that invariants should be as strong as necessary but no stronger. Theorems provide a way for checks to confirm those properties that are *"obviously"* true. 
- 
-###Correctness & Consistency
-Correctness & consistency is one of the important aspects in a model. Not only the model has to be correctly modelled, i.e. all proof obligations discharged, it has to be consistent with the requirements. The model also has to be complete, fulfilling all the requirements.
 
 ###Concrete
 The models should describe behaviour, not details of how that behaviour is obtained. Therefore, models should be abstract, rather than concrete.
@@ -65,66 +62,33 @@ Despite having no integrity based constraints, some of our guards were sufficien
 ###Use of theorems
 In all four groups, no theorems were included, and will be disregarded for this basis of this critique.
 
-##Correctness & Consistency
-
-###Group 04
-Gruop 04 was able to model most of their requirements. There 
-
-###Group 07
-
-###Group 11
-
-###Group 03
-
 ##Concrete
-<<<<<<< HEAD
-###Group 04
-This group demonstrated good abstract design for their requirements. As we can see, the product requirements only describe the behaviour of the system instead of depicting specific stuff on how the requirement will be accomplish. However in event-B, their way of constructing the user access is too concrete because they have to specify which user it is in each function. Looking at figure 1 (appendix A), they just model the behaviour of what the system is going to do without any specific information that suggest how the system would meet the goal. For example in appendix B.1, the function Set Threshold contains the guard specify the user have to be a manager in order to use this function. 
 
-###Group 07
-In appendix C, the product requirements are too specific. They should move those requirements down or make them more abstract. For example, PD-2.5.3 states that items are placed under the same classification so this will tell where this item should be placed. This requirement should be replaced as the system can handle item storage. As for the Event-B, they have too many guards in each function that would make their model too specific. For instance in appendix D.1, the function Add Product to Warehouse has a lot of guards while there are only two actions.  They should delegate the invariants at each machine instead of within each function. Then in appendix D.2, the function contains too many details which would make the model too concrete. The guard that restricts the staff from making the transaction because the registrar doesn’t have enough money to give the changes is a huge problem for the staff. The staff would have to go get the changes from somewhere else then come back to notify the system that the registrar got more money then it could process the transaction.
+###Group 4
+
+This group demonstrated good abstract design for most of their requirements. As we can see, the product requirements only describe the behaviour of the system instead of depicting specific stuff on how the requirement will be accomplish. Looking at PD-2.2.1 and PD-2.2.2 (appendix A, figure 1), the two product requirements have goo abstract design because they just model the behaviour of the system without providing any specific ways or information that suggests how the system would meet the goal. However in event-B, their way of constructing the user access is too concrete because they have to specify which user was granted the access in each function. Also some of the events contain too many details.  For example in the MoveStock event (appendix A,figure2), this event contains too many guards that would make this event too specific. The group should distribute the guards out of the machine would be more abstract.  
+
+###Group 7
+
+Overall, this group have most of the requirements well model, but a few requirements are too specific and can be broken down further.  For instances, PD-2.5.5 (appendix B,figure1) is too specific because I know how the goal would be accomplish. They should move those requirements down or make them more abstract. For example, PD-2.5.3(appendix B,figure1) should be replaced as the system can handle item storage so then in the design level can then state that the same items would be place at the same location. As for the Event-B, they have too many guards in each function that would make their model too specific. For instance in the event AddStockToWarehouse (appendix B,figure2), the function has a lot of guards while there are only two actions.  Some of those guards can actually be moved to the invariants at each machine instead of within each function. Then in the BuyTrolly event (appendix B,figure3), the function contains too many details which would make the model too concrete. Like in a scenario when the registrar ran out of money, the guard would actually restrict the staff from making the transaction because the guard states it so therefore the event can not be fired. Maybe the cashier would actually want to settle the transaction first then proceed to get the changes for the customer. An abstract event would need to be as general as possible to compute with as many situations as possible. 
 
 ###Group 11
-Referring to appendix E, the requirement describes how it would achieve the goal making it too specific for a product requirement. The requirement should be more abstract like the system can handle replacement orders or else you can’t extend that product requirement further down to design level. Looking at this simple function Give Change in appendix F, the function has too many guards for only one operation. More guards should be delegated at the top of the machine and the invariants could be more general to make the model more abstract.
 
-###Group 03
-In appendix G, the requirement is specific to list out the attribute that the system would store. It can just be the system can record product details and then extends that requirement down to design level where you can then state that it can store these types of attributes.  Referencing to appendix H, the function contains too many guards that would make the function too specific. The function could be better to rearrange the guards out of the functions. 
-=======
-###group 4
-This group demonstrated good abstract design for most of their requirements. As we can see, the product requirements only describe the behaviour of the system instead of depicting specific stuff on how the requirement will be accomplish. Looking at PD-2.2.1 and PD-2.2.2 (appendix A, figure 1), the two product requirements have goo abstract design because they just model the behaviour of the system without providing any specific ways or information that suggests how the system would meet the goal. However in event-B, their way of constructing the user access is too concrete because they have to specify which user was granted the access in each function. Also some of the events contain too many details.  For example in the MoveStock event (appendix A,figure2), this event contains too many guards that would make this event too specific. The group should distribute the guards out of the machine would be more abstract.  
-###group 7
-Overall, this group have most of the requirements well model, but a few requirements are too specific and can be broken down further.  For instances, PD-2.5.5 (appendix B,figure1) is too specific because I know how the goal would be accomplish. They should move those requirements down or make them more abstract. For example, PD-2.5.3(appendix B,figure1) should be replaced as the system can handle item storage so then in the design level can then state that the same items would be place at the same location. As for the Event-B, they have too many guards in each function that would make their model too specific. For instance in the event AddStockToWarehouse (appendix B,figure2), the function has a lot of guards while there are only two actions.  Some of those guards can actually be moved to the invariants at each machine instead of within each function. Then in the BuyTrolly event (appendix B,figure3), the function contains too many details which would make the model too concrete. Like in a scenario when the registrar ran out of money, the guard would actually restrict the staff from making the transaction because the guard states it so therefore the event can not be fired. Maybe the cashier would actually want to settle the transaction first then proceed to get the changes for the customer. An abstract event would need to be as general as possible to compute with as many situations as possible. 
-###group 11
 This group has the most concrete requirements among the four groups. Referring to PD-1.2.6 (appendix C,figure1), the requirement is too concrete because I can figure out how the goods will be dealt with when it is in a replacement order. The requirement should be more abstract like the system can handle replacement orders or else you can’t extend that product requirement further down to design level. Then the event-B for this group has a lot of specific events that probably would only suit for some limited situation. By taking a look at this simple event Give Change (appendix C,figure2), this event has too many guards for only one operation. More guards should be delegated at the top of the machine and the invariants could be more general to make the model more abstract. 
-###group 3
+
+###Group 3
+
 This group has most of the requirements model fairly abstract with a few requirements that could be better. For example PL-2.4.3 (appendix D,figure1) contains specific information that list out the attribute that the system would store. The requirement can be replace as the system can record product details and then extends that requirement down to design level where it can then state the previous attributes that were mentioned.  Most of the events in Event-B were modelled well except for some events like AddProductStore (appendix D,figure2), the event contains too many guards that would make the function too specific. The function could be better to rearrange the guards out of the functions and also reduce the amount of information in the event. 
->>>>>>> 19308b3d405fdce2d6a1892a94ab325042605b58
 
-Overall, most of the groups have their requirements well modelled, but the Event-B was too specific in general. Out of all the groups, group 4 have the most abstract model for both the requirement and Event-B. Our group (group 3) is place in the middle because most of our requirements are well modelled. Group 11 have most concrete model and contains too many details in some of the functions making it cause too many errors in the model. 
-
+Overall, most of the groups have their requirements well modelled, but the Event-B was too specific in general. Out of all the groups, group 4 have the most abstract model for both the requirement and Event-B. Our group (group 3) is place in the middle because most of our requirements are well modelled. Group 11 have most concrete model and contains too many details in some of the functions making it cause too many errors in the model.
 
 ##Machine Sequence
-
 
 ###Group 04
 
 ####Machine Sequence
 
-* StorageArea
-* WarehouseR0
-* WarehouseR1
-* InventoryR3
-* StoreR4
-* StoreR5
-* StoreR6
-* AdministrationR7
-* WarehouseR8
-* StoreR9
-* CustomerR10
-* ExpiryR11
-* ExpiryR12
-* SplittersR13
-* ExpiryR14
+StorageArea --> WarehouseR0 --> WarehouseR1 --> InventoryR3 --> StoreR4 --> StoreR5 --> StoreR6 --> AdministrationR7--> WarehouseR8 --> StoreR9 --> CustomerR10 --> ExpiryR11 --> ExpiryR12 --> SplittersR13 --> ExpiryR14
 
 ####Critique
 Group 04 has the most number of machines among the 4 groups that we have decided to critique on. Coming in at a total of 15 machines. They started their model well. As the machines have strong relationships/linkage between each other as the refinement progresses. But started showing problems in their from AdministrationR7 onwards. Having not planned well before hand, they had to refine AdministrationR7 into WarehouseR8 to add in *event SetThreshold* and *event MoveStock refines AddObject*. They could have easily done that in StoreR6. <!-- \\ \\ --> Following on, they modelled StoreR9 to be able to choose, purchase, refund and move products. CustomerR10 to model loyalty points and memberships. Next, they followed on by modelling ExpiryR11, ExpiryR12. These refinements could have been incorporated into previous machines and clearly do not have any relations to the previous machine CustomerR10. <!-- \\ \\ --> They tried to split the stores/warehouse into different areas with the next refinement being SplittersR13. And with the new areas, they had to set the expiry to move stock to the new designated areas resulting in the refinement ExpiryR14. Due to lack of foresight and planning, the group did not have a good machine sequence. <!-- \\ \\ --> Instead of continuing to refine the machines in this way, they could have saved themselves much trouble by actually editing the previous machines to reflect the changes in work flow instead of pressing on.
@@ -133,20 +97,7 @@ Group 04 has the most number of machines among the 4 groups that we have decided
 
 ####Machine Sequence
 
-* POS-Product-R0
-* POS-Stock-R1
-* POS-Location-R2
-* POS-Trolley-R3
-* POS-User-R4
-* POS-Return-R5
-* POS-StorageCapacity-R6
-* POS-UserClasses-R7
-* POS-Days-R8
-* POS-Threshold-R9 
-* POS-Registers-R10
-* POS-ProductType-R11 
-* POS-Discount-R12
-* POS-PaymentMethods-R13
+POS-Product-R0 --> POS-Stock-R1 --> POS-Location-R2 --> POS-Trolley-R3 --> POS-User-R4 --> POS-Return-R5 --> POS-StorageCapacity-R6 --> POS-UserClasses-R7 --> POS-Days-R8 --> POS-Threshold-R9 --> POS-Registers-R10 --> POS-ProductType-R11 --> POS-Discount-R12 --> POS-PaymentMethods-R13
 
 ####Critique
 
@@ -157,14 +108,7 @@ Group 07 has quite a number of machines, 14 machines. Although unlike Group 04, 
 
 ####Machine Sequence
 
-* BasicPOS
-* Orders
-* Locations
-* Users
-* Transactions
-* Loyalty Program
-* Price Modification and Refund
-* Schedule
+BasicPOS --> Orders --> Locations --> Users --> Transactions --> Loyalty Program --> Price Modification and Refund --> Schedule
 
 ####Critique
 
@@ -174,11 +118,7 @@ Group 11 has less machines compared to the previous 2 groups. The flow is simila
 
 ####Machine Sequence
 
-* PoSWare
-* WarehouseR1
-* StoresR2
-* RetailR3
-* MembershipR4
+PoSWare --> WarehouseR1 --> StoresR2 --> RetailR3 --> MembershipR4
 
 ####Critique
 
@@ -209,6 +149,7 @@ All transactions made by the system will be stored in the system.
 PD-2.2.2 (!M) System will Keep Track of Related Transactions.
 Any related transactions are flagged in the system.
 ###Figure2
+
 \EVT {MoveStock}\cmt{ \\\hspace*{2.4 cm} [PD-3.2.2 System will Automatically Order Stock from Back Store Room to Replenish Store Shelves]
 \\\hspace*{2.2 cm} [PD-3.2.3 System will Automatically Order Stock from Warehouse to Replenish Back Store Room]
 \\\hspace*{2.2 cm} [PD-3.2.4 System will Automatically Order Stock from Suppliers to Replenish Warehouse] }
@@ -262,13 +203,16 @@ Any related transactions are flagged in the system.
 \end{description}
 \EndAct
 \end{description}
+
 ##B
 ###Figure1
 PD-2.5.3 Items are placed under the same classification and this will define which shelf it is
 placed on
 PD-2.5.5 The placement of a product on a specific shelf is defined by the size of the store,
 it’s location and season
+
 ###Figure2
+
 \EVT {AddStockToWarehouse}
 \EXTD {AddStockToWarehouse}
 \begin{description}
@@ -302,7 +246,9 @@ it’s location and season
 \end{description}
 \EndAct
 \end{description} 
+
 ###Figure3
+
 \EVT {BuyTrolley}
 \REF {BuyTrolley}
 \begin{description}
@@ -347,11 +293,14 @@ it’s location and season
 \end{description}
 \EndAct
 \end{description}
+
 ##C
 ###Figure1
 PD-1.2.6 Goods that have been replaced by a replacement order are automatically placed into a special/spot sale specification.
 Replaced goods that are approaching use-by date will be placed into a discount class for spot sales and specials.
+
 ##Figure2
+
 \EVT {Give~Change}
 \begin{description}
 \AnyPrm
@@ -373,10 +322,12 @@ Replaced goods that are approaching use-by date will be placed into a discount c
 \end{description}
 \EndAct
 \end{description}
+
 ##D
 ###Figure1
 PL-2.4.3 The system will record details about specific items (price, desc, weight, size, barcode)
 ###Figure2
+
 \EVT {AddProductStore}\cmt{ \\\hspace*{3.6 cm} Adds a product to a store catalouge (sets quantity to 0) \\\hspace*{4.4 cm} Note it only sets the stock for the back of the store. \\\hspace*{4.4 cm} The reason is because a store may accepct refunds for an item that is not sold there }
 \EXTD {AddProductStore}
 \begin{description}
@@ -404,3 +355,4 @@ PL-2.4.3 The system will record details about specific items (price, desc, weigh
 \end{description}
 \EndAct
 \end{description}
+
