@@ -39,5 +39,5 @@ It was also observed that while the above three specs operates with multiple fun
 Despite having no integrity based constraints, some of our guards were sufficiently comprehensive, and thus can be translated and generalised to become more appropriate invariants. For example, the interaction between the purchases of ReservedStock, ReservedNum, stock and trolley with ActiveProd can be readily prepared and translated to an invariant based on the BuyReserve and ReserveProduct events. With these guards, our team can consider outlining possible and more effective invariants to add and improve in the later stages.\
 \
 ###Use of theorems\
-In all four groups, no theorems were included, and will be disregarded for this basis of this critique.\
+In all four groups, no theorems were included, and will be disregarded for this basis of this critiques.\
 }
