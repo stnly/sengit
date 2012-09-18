@@ -1,0 +1,7 @@
+package controls
+
+object Manage {
+	addStaff(staff:User) {
+	  
+	}
+}

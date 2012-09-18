@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1347921689984
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1347921826312
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1347921833734
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1347921838484
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1347921839250
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1347926543562
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1347926568640
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1347926589328
+executed,command,org.eclipse.ui,3.7.0.v20110928-1505,"org.eclipse.ui.help.aboutAction",1347926589328
+started,bundle,org.eclipse.equinox.p2.ui.sdk,1.0.200.v20110815-1419,"org.eclipse.equinox.p2.ui.sdk",1347926596531
+started,bundle,org.eclipse.equinox.p2.ui,2.1.1.v20120113-1346,"org.eclipse.equinox.p2.ui",1347926596750
+started,bundle,org.eclipse.equinox.p2.transport.ecf,1.0.0.v20111128-0624,"org.eclipse.equinox.p2.transport.ecf",1347926597703
+started,bundle,org.eclipse.ecf.filetransfer,5.0.0.v20110531-2218,"org.eclipse.ecf.filetransfer",1347926597796
+started,bundle,org.eclipse.ecf.identity,3.1.100.v20110531-2218,"org.eclipse.ecf.identity",1347926597828
+started,bundle,org.eclipse.ecf,3.1.300.v20110531-2218,"org.eclipse.ecf",1347926597953
+started,bundle,org.eclipse.ecf.provider.filetransfer.httpclient,4.0.0.v20110531-2218,"org.eclipse.ecf.provider.filetransfer.httpclient",1347926598203
+started,bundle,org.eclipse.ecf.provider.filetransfer,3.2.0.v20110531-2218,"org.eclipse.ecf.provider.filetransfer",1347926598312
+deactivated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1347926598796
+error,log,,,"Provisioning exception",1347926599500
+error,log,,,"Provisioning exception",1347926599734
+error,log,,,"Provisioning exception",1347926599984
+error,log,,,"Provisioning exception",1347926600187
+error,log,,,"Provisioning exception",1347926600390
+activated,workbench,org.eclipse.ui.workbench,3.7.1.v20120104-1859,"",1347926600781
+executed,command,org.eclipse.equinox.p2.ui.sdk,1.0.200.v20110815-1419,"org.eclipse.equinox.p2.ui.sdk.install",1347926600796

@@ -1,0 +1,7 @@
+package classes
+
+class User(userName:String,userType:Char) {
+	var name: String = userName
+	var Type : Char = userType
+	
+}

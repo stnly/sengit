@@ -1,0 +1,9 @@
+package classes
+
+class Product(ProdName: String, ProdDescription: String, Prodprice: Int, Prodamount: Int, ProExpDate: Int ) {
+	var name: String = ProdName
+	var description: String = ProdDescription
+	var price: Int = Prodprice
+	var amount: Int = Prodamount
+	var expiryDate: Int = ProExpDate
+}

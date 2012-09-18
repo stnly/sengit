@@ -1,0 +1,24 @@
+package classes
+
+class Location(LocName: String, LocAddress: String, LocOwner: String) {
+	var name: String = LocName
+	var address: String = LocAddress
+	var Type : Char = 0
+	var owner: String = LocOwner
+	def becomeStore : Location = new Store ()
+	def becomeWarehouse : Location = new Warehouse ()
+	class Store() extends Location (this.name,this.address,this.owner) {
+		this.Type = 'S'
+		var backStore = new BackStore()
+	}
+	class Warehouse() extends Location (this.name,this.address,this.owner) {
+		this.Type = 'W'
+	}
+}
+class Shelf () {
+  
+}
+
+class BackStore() {
+  
+}

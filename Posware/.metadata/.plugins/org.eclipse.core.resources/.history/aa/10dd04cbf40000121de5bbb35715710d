@@ -1,0 +1,13 @@
+package classes
+import java.util.ArrayList
+
+class Trolley (trolOwner:Customer) {
+  val owner = trolOwner
+  val items:ArrayList[Product]
+  def addProductToTrolley(newProduct:Product) {
+    this.items.add(newProduct)
+  }
+}
+class Customer {
+
+}

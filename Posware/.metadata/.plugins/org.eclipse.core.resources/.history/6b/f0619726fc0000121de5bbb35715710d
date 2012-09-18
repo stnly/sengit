@@ -1,0 +1,9 @@
+package controls
+
+
+object Admin {
+	def createLocation() {
+	  
+	}
+	
+}

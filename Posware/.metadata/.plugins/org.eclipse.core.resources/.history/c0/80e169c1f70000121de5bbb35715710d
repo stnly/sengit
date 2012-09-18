@@ -1,0 +1,34 @@
+package classes
+import java.util.ArrayList
+import java.util.Date
+
+class Trolley (trolOwner:Customer) {
+  val owner = trolOwner
+  var items = new ArrayList[Product]
+  def addProductToTrolley(newProduct:Product) {
+    this.items.add(newProduct)
+  }
+}
+
+class Customer() {
+	var trolley:Trolley
+	def addTrolley(){
+		trolley = new Trolley(this)
+	}
+	def removeTrolley(){
+	
+	}
+	def checkOut(Items:Trolley){
+		
+	}
+	class Member(memberName:String,Contact:Int,Points:Int) extends Customer() {
+		var name: String = memberName
+		var contact: Int = Contact
+		var points: Int = Points
+	}
+}
+
+class Reserve (Items:Trolley,PickUpDate:Date) {
+	val items = Items
+	val pickUpDate = PickUpDate
+}

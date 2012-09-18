@@ -1,0 +1,11 @@
+package classes
+import java.util.Date
+
+class Product(ProdName:String,ProdDescription:String,Prodprice:Int,Prodamount:Int,ProdExpDate:Date) {
+	var name: String = ProdName
+	var description: String = ProdDescription
+	var price: Int = Prodprice
+	var amount: Int = Prodamount
+	var expiryDate: Date = ProdExpDate
+	
+}

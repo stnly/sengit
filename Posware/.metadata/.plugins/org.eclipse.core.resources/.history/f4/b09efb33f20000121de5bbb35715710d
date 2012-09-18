@@ -1,0 +1,10 @@
+package classes
+
+class Product(ProdID:String,ProdName:String,ProdDescription:String,Prodprice:Int,Prodamount:Int,ProdExpDate:Int) {
+	val ID: String = ProdID
+	var name: String = ProdName
+	var description: String = ProdDescription
+	var price: Int = Prodprice
+	var amount: Int = Prodamount
+	var expiryDate: Int = ProdExpDate
+}
