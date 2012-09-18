@@ -308,7 +308,7 @@ it’s location and season
 PD-1.2.6 Goods that have been replaced by a replacement order are automatically placed into a special/spot sale specification.
 Replaced goods that are approaching use-by date will be placed into a discount class for spot sales and specials.
 
-##Figure2
+###Figure2
 
 ![](4.jpg)
 
