@@ -1,0 +1,15 @@
+compile
+quit
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+compile
+clean
+compile
+cd
+ls
