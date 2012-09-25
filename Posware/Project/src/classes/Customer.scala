@@ -8,14 +8,16 @@ class Trolley (trolOwner:Customer) {
   def addProductToTrolley(newProduct:Product) {
     this.items.add(newProduct)
   }
+  def cleanItems { items.clear() }
 }
 
 class Customer() {
+	var trolley:Trolley = null;
 	def addTrolley(newTrolley:Trolley){
-		var trolley = newTrolley
+		trolley = newTrolley
 	}
 	def removeTrolley{
-	
+		trolley = null
 	}
 	def checkOut(Items:Trolley){
 		
