@@ -1,5 +1,5 @@
 [debug] Running Test PoSWareTest : subclass(false, org.scalatest.Suite) with arguments 
-[error] Failed: : Total 10, Failed 3, Errors 0, Passed 7, Skipped 0
+[error] Failed: : Total 10, Failed 2, Errors 0, Passed 8, Skipped 0
 [error] Failed tests:
 [error] 	PoSWareTest
 java.lang.RuntimeException: Tests unsuccessful

@@ -67,19 +67,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PoSWare.scala" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="PoSWare.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/classes/PoSWare.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="3" selection-start="1563" selection-end="1563" vertical-scroll-proportion="0.0">
+            <state line="112" column="6" selection-start="3310" selection-end="3310" vertical-scroll-proportion="0.7735849">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PoSWareTest.scala" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="PoSWareTest.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/scala/PoSWareTest.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="33" selection-start="2081" selection-end="2081" vertical-scroll-proportion="0.6956522">
+            <state line="70" column="125" selection-start="1796" selection-end="1796" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -127,8 +127,8 @@
         <option value="$PROJECT_DIR$/src/main/scala/classes/Location.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/classes/Product.scala" />
         <option value="$PROJECT_DIR$/src/test/scala/LocationTest.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/classes/PoSWare.scala" />
         <option value="$PROJECT_DIR$/src/test/scala/PoSWareTest.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/classes/PoSWare.scala" />
       </list>
     </option>
   </component>
@@ -669,19 +669,19 @@
         <state line="7" column="0" selection-start="108" selection-end="108" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/classes/PoSWare.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="3" selection-start="1563" selection-end="1563" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/scala/PoSWareTest.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="33" selection-start="2081" selection-end="2081" vertical-scroll-proportion="0.6956522">
+        <state line="70" column="125" selection-start="1796" selection-end="1796" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/classes/PoSWare.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="112" column="6" selection-start="3310" selection-end="3310" vertical-scroll-proportion="0.7735849">
+          <folding />
         </state>
       </provider>
     </entry>

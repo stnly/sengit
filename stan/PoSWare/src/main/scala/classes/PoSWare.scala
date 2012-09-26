@@ -23,7 +23,7 @@ object PoSWare {
   }
 
   //AddStore Event
-  def AddStore(LocationID:String):Store = {
+  def AddStore(LocationID:String):Location = {
     require(PoSWare.Location.contains(LocationID) &&
       !PoSWare.Store.contains(LocationID) &&
       !PoSWare.Warehouse.contains(LocationID))
@@ -33,14 +33,13 @@ object PoSWare {
 
 
   //AddWarehouse Event
-  def AddWarehouse(LocationID:String):Warehouse = {
+  def AddWarehouse(LocationID:String):Location = {
     require(PoSWare.Location.contains(LocationID) &&
       !PoSWare.Store.contains(LocationID) &&
       !PoSWare.Warehouse.contains(LocationID))
     new Warehouse(LocationID)
     //PoSWare.Warehouse += LocationID
     //new Location(LocationID)
-
   }
 
   //Location Class
@@ -100,7 +99,7 @@ object PoSWare {
     require(PoSWare.Warehouse.contains(Location.ID))
     require(!ActiveProd.contains(Location->Product))
     require(stock == 0)
-    require((Location->Product.ID).eq(PoSWare.Location.contains(Location.ID)->Product.ID))  //@grd4 in event AddProductLocation. (Verify please)
+    //#!#require((Location->Product.ID).eq(PoSWare.Location.contains(Location.ID)->Product.ID))  //@grd4 in AddProductLocation Event. (Verify the math)
     require(!PoSWare.Store.contains(Location.ID))
     ActiveProd += (Location->Product)
     Stock = Set(ActiveProd->stock)

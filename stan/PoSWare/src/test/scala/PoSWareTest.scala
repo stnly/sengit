@@ -73,13 +73,16 @@ class PoSWareTest extends FunSuite {
   }
 
   test("Add a Product to a Location") {
-    val product1 = PoSWare.AddProductList("Milk")
-    //val location1 = PoSWare.AddLocation("D")
-    val location2 = PoSWare.AddWarehouse("D")
+    var product1 = PoSWare.AddProductList("Milk")
+    var location1 = PoSWare.AddLocation("D")
+    var location2 = PoSWare.AddWarehouse(location1.ID)
     println(location2.ID)
     println(product1.ID)
     println(PoSWare.Product)
     PoSWare.AddProductLocation(product1,location2,0)
-
+    assert(PoSWare.ActiveProd.size == 1)
+    assert(PoSWare.ActiveProd.contains(location2->product1))
+    assert(PoSWare.Stock.size == 1)
+    assert(PoSWare.Stock.contains(Set(location2->product1)->0))
   }
 }
