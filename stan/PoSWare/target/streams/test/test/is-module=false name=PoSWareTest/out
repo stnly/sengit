@@ -5,13 +5,13 @@
 [info] - Adding repeated Locations *** FAILED ***
 [info]   java.lang.IllegalArgumentException: requirement failed
 [info]   at scala.Predef$.require(Predef.scala:202)
-[info]   at classes.PoSWare$.AddLocation(PoSWare.scala:18)
-[info]   at PoSWareTest$$anonfun$4.apply$mcV$sp(PoSWareTest.scala:28)
-[info]   at PoSWareTest$$anonfun$4.apply(PoSWareTest.scala:27)
-[info]   at PoSWareTest$$anonfun$4.apply(PoSWareTest.scala:27)
+[info]   at classes.PoSWare$.AddLocation(PoSWare.scala:20)
+[info]   at PoSWareTest$$anonfun$4.apply$mcV$sp(PoSWareTest.scala:29)
+[info]   at PoSWareTest$$anonfun$4.apply(PoSWareTest.scala:28)
+[info]   at PoSWareTest$$anonfun$4.apply(PoSWareTest.scala:28)
 [info]   at org.scalatest.FunSuite$$anon$1.apply(FunSuite.scala:1265)
 [info]   at org.scalatest.Suite$class.withFixture(Suite.scala:1974)
-[info]   at PoSWareTest.withFixture(PoSWareTest.scala:5)
+[info]   at PoSWareTest.withFixture(PoSWareTest.scala:6)
 [info]   at org.scalatest.FunSuite$class.invokeWithFixture$1(FunSuite.scala:1262)
 [info]   at org.scalatest.FunSuite$$anonfun$runTest$1.apply(FunSuite.scala:1271)
 [info]   ...
@@ -21,13 +21,27 @@
 [info] - Adding repeated Stores *** FAILED ***
 [info]   java.lang.IllegalArgumentException: requirement failed
 [info]   at scala.Predef$.require(Predef.scala:202)
-[info]   at classes.PoSWare$.AddStore(PoSWare.scala:25)
-[info]   at PoSWareTest$$anonfun$8.apply$mcV$sp(PoSWareTest.scala:61)
-[info]   at PoSWareTest$$anonfun$8.apply(PoSWareTest.scala:59)
-[info]   at PoSWareTest$$anonfun$8.apply(PoSWareTest.scala:59)
+[info]   at classes.PoSWare$.AddStore(PoSWare.scala:27)
+[info]   at PoSWareTest$$anonfun$8.apply$mcV$sp(PoSWareTest.scala:62)
+[info]   at PoSWareTest$$anonfun$8.apply(PoSWareTest.scala:60)
+[info]   at PoSWareTest$$anonfun$8.apply(PoSWareTest.scala:60)
 [info]   at org.scalatest.FunSuite$$anon$1.apply(FunSuite.scala:1265)
 [info]   at org.scalatest.Suite$class.withFixture(Suite.scala:1974)
-[info]   at PoSWareTest.withFixture(PoSWareTest.scala:5)
+[info]   at PoSWareTest.withFixture(PoSWareTest.scala:6)
+[info]   at org.scalatest.FunSuite$class.invokeWithFixture$1(FunSuite.scala:1262)
+[info]   at org.scalatest.FunSuite$$anonfun$runTest$1.apply(FunSuite.scala:1271)
+[info]   ...
+[info] - Add a Product
+[info] - Add a Product to a Location *** FAILED ***
+[info]   java.lang.IllegalArgumentException: requirement failed
+[info]   at scala.Predef$.require(Predef.scala:202)
+[info]   at classes.PoSWare$.AddProductLocation(PoSWare.scala:104)
+[info]   at PoSWareTest$$anonfun$10.apply$mcV$sp(PoSWareTest.scala:83)
+[info]   at PoSWareTest$$anonfun$10.apply(PoSWareTest.scala:76)
+[info]   at PoSWareTest$$anonfun$10.apply(PoSWareTest.scala:76)
+[info]   at org.scalatest.FunSuite$$anon$1.apply(FunSuite.scala:1265)
+[info]   at org.scalatest.Suite$class.withFixture(Suite.scala:1974)
+[info]   at PoSWareTest.withFixture(PoSWareTest.scala:6)
 [info]   at org.scalatest.FunSuite$class.invokeWithFixture$1(FunSuite.scala:1262)
 [info]   at org.scalatest.FunSuite$$anonfun$runTest$1.apply(FunSuite.scala:1271)
 [info]   ...

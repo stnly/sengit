@@ -1,5 +1,6 @@
 import classes.PoSWare
 
+import classes.PoSWare.{Location, Store}
 import org.scalatest._
 
 class PoSWareTest extends FunSuite {
@@ -66,6 +67,19 @@ class PoSWareTest extends FunSuite {
     assert(PoSWare.Store.size == 3)
   }
 
+  test("Add a Product") {
+    PoSWare.AddProductList("Bread")
+    assert(PoSWare.Product.contains("Bread"))
+  }
 
+  test("Add a Product to a Location") {
+    val product1 = PoSWare.AddProductList("Milk")
+    //val location1 = PoSWare.AddLocation("D")
+    val location2 = PoSWare.AddWarehouse("D")
+    println(location2.ID)
+    println(product1.ID)
+    println(PoSWare.Product)
+    PoSWare.AddProductLocation(product1,location2,0)
 
+  }
 }

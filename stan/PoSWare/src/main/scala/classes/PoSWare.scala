@@ -11,29 +11,36 @@ object PoSWare {
   //Initialise Warehouse Set in PoSWare machine
   var Warehouse:Set[(String)] = Set()
 
-  //AddLocation Event
-  def AddLocation(LocationID:String) {
+  /**
+   * AddLocation Event.
+   * @param LocationID
+   *                   LocationID:String should not exist in the set of PoSWare.Location
+   */
+  def AddLocation(LocationID:String):Location = {
     require(!PoSWare.Location.contains(LocationID))
     //PoSWare.Location += LocationID
     new PoSWare.Location(LocationID)
   }
 
   //AddStore Event
-  def AddStore(LocationID:String) {
+  def AddStore(LocationID:String):Store = {
     require(PoSWare.Location.contains(LocationID) &&
       !PoSWare.Store.contains(LocationID) &&
       !PoSWare.Warehouse.contains(LocationID))
-    new Store(LocationID)
     new Backstore()
+    new PoSWare.Store(LocationID)
   }
 
 
   //AddWarehouse Event
-  def AddWarehouse(LocationID:String) {
+  def AddWarehouse(LocationID:String):Warehouse = {
     require(PoSWare.Location.contains(LocationID) &&
       !PoSWare.Store.contains(LocationID) &&
       !PoSWare.Warehouse.contains(LocationID))
     new Warehouse(LocationID)
+    //PoSWare.Warehouse += LocationID
+    //new Location(LocationID)
+
   }
 
   //Location Class
@@ -43,12 +50,12 @@ object PoSWare {
   }
 
   //Warehouse Class
-  class Warehouse(LocationID:String) {
+  class Warehouse(LocationID:String) extends Location (LocationID:String){
     PoSWare.Warehouse += LocationID
   }
 
   //Store Class
-  class Store(LocationID:String) {
+  class Store(LocationID:String) extends Location (LocationID:String){
     PoSWare.Store += LocationID
   }
 
@@ -56,33 +63,52 @@ object PoSWare {
   class Backstore {
 
   }
-}
 
-class Product (ProdID:String) {
   //Initialise PRODUCT Set in PoSWare_ctx context
-  var PRODUCT:Set[(String)] = Set()
+  //var PRODUCT:Set[(String)] = Set()
+
   //Initialise Product Set in PoSWare machine
   var Product:Set[(String)] = Set()
+
   //Initialise ActiveProd Set in PoSWare machine
-  var ActiveProd:Set[(PoSWare.Location,Product)] = Set()
+  var ActiveProd:Set[(PoSWare.Location,PoSWare.Product)] = Set()
+
   //Initialise Stock Set in PoSWare machine
   var Stock:Set[(Set[(PoSWare.Location,Product)],Int)] = Set()
 
-  var ID: String = ProdID
-
-  def AddProductList(ProdID:String) {
-    require(PRODUCT.contains(ProdID) && !Product.contains(ProdID))
-    Product += ProdID
+  //AddProductList Event
+  def AddProductList(ProductID:String):Product = {
+    require(!Product.contains(ProductID))
+    new Product(ProductID)
   }
-  def AddProductLocation(ProdID:String,Location:PoSWare.Location, stock:Int){
-    require(Product.contains(ProdID) &&
-      PoSWare.Location.contains(Location.ID) &&
-      PoSWare.Warehouse.contains(Location.ID) &&
-      !ActiveProd.contains(Location->Product.this) &&
-      stock == 0 &&
-      (Location->ProdID).eq(PoSWare.Location.contains(Location.ID)->Product.this.ID) &&  //@grd4 in event AddProductLocation. (Verify please)
-      !PoSWare.Store.contains(Location.ID))
-    ActiveProd += (Location->Product.this)
+
+
+  /**
+   * AddProductLocation Event
+   * I'm not sure if it is meant to take in a Product class and Location class in respect to the Event-B.
+   * But it is what I did.
+   * @param Product
+   *                A Product Class
+   * @param Location
+   *                A Location Class
+   * @param stock
+   *                An Integer, should be 0.
+   */
+  def AddProductLocation(Product:Product, Location:Location, stock:Int) {
+    require(PoSWare.Product.contains(Product.ID))
+    require(PoSWare.Location.contains(Location.ID))
+    require(PoSWare.Warehouse.contains(Location.ID))
+    require(!ActiveProd.contains(Location->Product))
+    require(stock == 0)
+    require((Location->Product.ID).eq(PoSWare.Location.contains(Location.ID)->Product.ID))  //@grd4 in event AddProductLocation. (Verify please)
+    require(!PoSWare.Store.contains(Location.ID))
+    ActiveProd += (Location->Product)
     Stock = Set(ActiveProd->stock)
   }
+
+  class Product (ProductID:String) {
+    val ID = ProductID
+    Product += ProductID
+  }
+
 }
