@@ -1,0 +1,27 @@
+[debug] 
+[debug] Initial source changes: 
+[debug] 	removed:Set()
+[debug] 	added: Set()
+[debug] 	modified: Set(/home/stan/IdeaProjects/PoSWare/src/test/scala/PoSWareTest.scala)
+[debug] Removed products: Set()
+[debug] Modified external sources: Set()
+[debug] Modified binary dependencies: Set()
+[debug] Initial directly invalidated sources: Set(/home/stan/IdeaProjects/PoSWare/src/test/scala/PoSWareTest.scala)
+[debug] 
+[debug] Sources indirectly invalidated by:
+[debug] 	product: Set()
+[debug] 	binary dep: Set()
+[debug] 	external source: Set()
+[debug] Initially invalidated: Set(/home/stan/IdeaProjects/PoSWare/src/test/scala/PoSWareTest.scala)
+[info] Compiling 1 Scala source to /home/stan/IdeaProjects/PoSWare/target/scala-2.9.2/test-classes...
+[debug] Running cached compiler 36a8f2a3, interfacing (CompilerInterface) with Scala compiler version 2.9.2
+[debug] Calling Scala compiler with arguments  (CompilerInterface):
+[debug] 	-d
+[debug] 	/home/stan/IdeaProjects/PoSWare/target/scala-2.9.2/test-classes
+[debug] 	-bootclasspath
+[debug] 	/usr/lib/jvm/java-7-openjdk/jre/lib/resources.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/rt.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/jsse.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/jce.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/charsets.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/netx.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/plugin.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/rhino.jar:/usr/lib/jvm/java-7-openjdk/jre/lib/jfr.jar:/usr/lib/jvm/java-7-openjdk/jre/classes:/home/stan/.sbt/boot/scala-2.9.2/lib/scala-library.jar
+[debug] 	-classpath
+[debug] 	/home/stan/IdeaProjects/PoSWare/target/scala-2.9.2/test-classes:/home/stan/IdeaProjects/PoSWare/target/scala-2.9.2/classes:/home/stan/.ivy2/cache/org.squeryl/squeryl_2.9.2/jars/squeryl_2.9.2-0.9.5-2.jar:/home/stan/.ivy2/cache/cglib/cglib-nodep/jars/cglib-nodep-2.2.jar:/home/stan/.ivy2/cache/org.scala-lang/scalap/jars/scalap-2.9.2.jar:/home/stan/.sbt/boot/scala-2.9.2/lib/scala-compiler.jar:/home/stan/.ivy2/cache/postgresql/postgresql/jars/postgresql-8.4-701.jdbc4.jar:/home/stan/.ivy2/cache/org.scalatest/scalatest_2.9.2/jars/scalatest_2.9.2-1.8.jar
+[debug] Scala compilation took 0.423212194 s
+[debug] 	Invalidated direct: Set()
+[debug] Incrementally invalidated: Set()

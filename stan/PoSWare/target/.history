@@ -2,3 +2,6 @@ y
 exit
 compile
 run
+update
+reload
+exit
