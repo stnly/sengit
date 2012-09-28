@@ -18,3 +18,7 @@ git pull
 
 #To show all previous commits in this entire git repository:
 git show
+
+
+
+ARMIN
