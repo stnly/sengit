@@ -1,0 +1,4 @@
+[debug] Running Test PoSWareTest : subclass(false, org.scalatest.Suite) with arguments 
+[info] Passed: : Total 14, Failed 0, Errors 0, Passed 14, Skipped 0
+[debug] Passed tests:
+[debug] 	PoSWareTest

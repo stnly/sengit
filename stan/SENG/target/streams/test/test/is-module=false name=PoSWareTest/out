@@ -1,0 +1,15 @@
+[info] PoSWareTest:
+[info] - Empty Sets
+[info] - Adding a Location
+[info] - Adding multiple Locations
+[info] - Adding repeated Locations
+[info] - Empty Store Set
+[info] - Adding a Store
+[info] - Adding multiple Stores
+[info] - Adding repeated Stores
+[info] - Add a Product
+[info] - Add a Product to a Location
+[info] - Test RestockWH
+[info] - Test SupplierOrder
+[info] - Test SetStockAlertLevel
+[info] - Test LowStockAlert
