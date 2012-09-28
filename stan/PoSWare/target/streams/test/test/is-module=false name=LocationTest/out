@@ -1,5 +1,0 @@
-[info] LocationTest:
-[info] - Adding a Location
-[info] - Adding another same Location
-[info] - Adding a Warehouse *** FAILED ***
-[info]   false did not equal true (LocationTest.scala:31)
