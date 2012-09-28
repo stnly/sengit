@@ -1,10 +1,10 @@
-package main.scala
+package main.scala.classes
 import org.squeryl.PrimitiveTypeMode._
 import org.squeryl.Schema
 import org.squeryl.annotations
 import org.squeryl._
 import adapters.H2Adapter
-import java.util.Date
+import java.util.{Calendar, Date}
 import java.sql.Timestamp
 
 
@@ -16,6 +16,11 @@ object UserType extends Enumeration {
   val admin = Value("Admin")
 }
 
+/*class Product (val id:Long, val productName:String, val expiryDate:Date, var price:BigDecimal){
+  def this() = this(0, "", Calendar.getInstance().getTime, 0.0)
+} */
+
+
 object LocationType extends Enumeration {
   type LocationType = Value
   val location = Value(1,"Location")
@@ -24,46 +29,37 @@ object LocationType extends Enumeration {
   val backStore = Value(4,"BackStore")
 }
 
-class Product (
-  val id:Long,
-  val productName:String,
-  val expiryDate:Date,
-  var price:BigDecimal){
-}
-
 import LocationType._
-class Location (
-  val id:Long,
-  val locationName:String,
-  val locationType:LocationType){
-}
+//Location Class
+/*class Location (val id:Long, val locationName:String, val locationType:LocationType){
+  import Database._
+  def this() = this(0,"",LocationType.location)
+  val isLocation = location.where(l=>l.locationName === locationName).single
+  location.insert(new Location(0,"Mike",LocationType.location))
+
+}    */
+
 import UserType._
-class User (val id:Long,
-  var name:String,
-  var userType:UserType){
+
+class User (val id:Long, var name:String, var userType:UserType){
+  def this() = this(0,"",UserType.admin)
 }
 
-class Transaction(
-  val id:Long,
-  val product:Set[(Product)],
-  val amount:BigDecimal){
+class Transaction(val id:Long, val product:Set[(String)], val amount:BigDecimal){
+  def this() = this(0,Set(""),0.0)
 }
 
-class Member (
-  val id:Long,
-  var name:String,
-  var points:Long){
+class Member (val id:Long, var name:String, var points:Long){
+  def this() = this(0,"",0)
 }
 
 
 object Database extends Schema{
-  val product = table[Product]
-  val location = table[Location]
-  val user = table[User]
-  val transaction = table[Transaction]
-  val member = table[Member]
-
-
+  val productTable = table[Product]("product")
+  val locationTable = table[Location]("location")
+  val userTable = table[User]("user")
+  val transactionTable = table[Transaction]("transaction")
+  val memberTable = table[Member]("member")
 }
 
 object Main {
@@ -79,15 +75,37 @@ object Main {
 
     inTransaction {
 
-    drop  // Bad idea in production application!!!!
-    create
-    printDdl
+      drop  // Bad idea in production application!!!!
+      create
+      printDdl
 
-      //import main.scala._
+      userTable.insert(new User(0,"Stan",UserType.manager))
+      userTable.insert(new User(1,"Daniel",UserType.manager))
+      userTable.insert(new User(2,"Mike",UserType.clerk))
 
-      user.insert(new User(0,"Stan",UserType.manager))
-      val a = from(user)(a=>where(a.name === "Stan")select(a))
-      println(a)
+      val query = userTable.where(a=> a.userType === UserType.manager)
+      for (q <- query) {
+        println(q.id+" "+q.name+" "+q.userType)
+      }
+
+      val location1 = new Location()
+      location1.AddLocation("A")
+      location1.AddLocation("B")
+      val printAllLocations = for (l <- from(locationTable)(a=> select(a))) {println(l.id+" "+l.locationName+" "+l.locationType)}
+      printAllLocations
+      //val fullTable = (table:Table) => {from (table) (t => select(t))}
+
+      val product1 = new Product()
+      product1.AddProduct("Milk",Calendar.getInstance().getTime(),10)
+      val printAllProducts = for(p <- {from (productTable) (t => select(t))}) {
+        println(p.id+" "+p.productName+" "+p.expiryDate+" "+p.price)
+      }
+      printAllProducts
+
+      val printAllUsers = for(u <- {from (userTable) (u => select(u))}) {
+        println(u.id+" "+u.name+" "+u.userType)
+      }
+      printAllUsers
     }
   }
 }

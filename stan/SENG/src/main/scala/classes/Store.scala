@@ -5,13 +5,13 @@ import classes.PoSWare
 import collection.mutable.{Set,Map}
 
 //Store Class
-class Store(LocationID:String) extends Location (LocationID:String){
+class Store() extends Location (){
 
 
   def RemProductStoreFront(Product:Product, Location:Location) {
-    require(PoSWare.Product.contains(Product.ID))
-    require(PoSWare.Store.contains(Location.ID))
-    require(!PoSWare.Warehouse.contains(Location.ID))
+    require(PoSWare.Product.contains(Product.id))
+    require(PoSWare.Store.contains(Location.id))
+    require(!PoSWare.Warehouse.contains(Location.id))
     require(Set(Set(Location->Product)).contains(PoSWare.ActiveProd.union(Set(Location->Product))))  //@grd4 ActiveProd ∪ {store ↦ item} ∈ Location ↔ Product
     require(PoSWare.ActiveProd.contains(Location->Product))
     PoSWare.ActiveProd -= Location->Product
@@ -22,15 +22,15 @@ class Store(LocationID:String) extends Location (LocationID:String){
 
   //TODO  AddProductStoreFront Event
   def AddProductStoreFront(Product:Product, Location:Location, Stock:String) {
-    require(PoSWare.Product.contains(Product.ID))
-    require(PoSWare.Store.contains(Location.ID))
-    require(PoSWare.Warehouse.contains(Location.ID))
+    require(PoSWare.Product.contains(Product.id))
+    require(PoSWare.Store.contains(Location.id))
+    require(PoSWare.Warehouse.contains(Location.id))
     require(Set(Set(Location->Product)).contains(PoSWare.ActiveProd.union(Set(Location->Product)))) //@grd4 ActiveProd ∪ {store ↦ item} ∈ Location ↔ Product
   }
 
   def LowStockAlertStore(Product:Product, Location:Location, level:Int, stock:Int) {
-    require(PoSWare.Store.contains(Location.ID))
-    require(PoSWare.Product.contains(Product.ID))
+    require(PoSWare.Store.contains(Location.id))
+    require(PoSWare.Product.contains(Product.id))
     require(level == PoSWare.ReorderLevel.apply(Set(Location->Product)))
     require(PoSWare.ActiveProd.contains(Location->Product))
     require(stock == PoSWare.Stock.apply(Set(Location->Product)))
@@ -39,8 +39,8 @@ class Store(LocationID:String) extends Location (LocationID:String){
   }
 
   def SetStockAlertLevelStore(Product:Product, Location:Location, level:Int, user:String) {
-    require(PoSWare.Store.contains(Location.ID))
-    require(PoSWare.Product.contains(Product.ID))
+    require(PoSWare.Store.contains(Location.id))
+    require(PoSWare.Product.contains(Product.id))
     require(level > 0)
     require(PoSWare.ActiveProd.contains(Location->Product))
     require(PoSWare.Users.contains(user))

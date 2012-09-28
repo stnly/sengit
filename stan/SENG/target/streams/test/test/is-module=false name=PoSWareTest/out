@@ -1,15 +1,17 @@
 [info] PoSWareTest:
 [info] - Empty Sets
-[info] - Adding a Location
-[info] - Adding multiple Locations
-[info] - Adding repeated Locations
-[info] - Empty Store Set
-[info] - Adding a Store
-[info] - Adding multiple Stores
-[info] - Adding repeated Stores
-[info] - Add a Product
-[info] - Add a Product to a Location
-[info] - Test RestockWH
-[info] - Test SupplierOrder
-[info] - Test SetStockAlertLevel
-[info] - Test LowStockAlert
+[info] - Adding a Location *** FAILED ***
+[info]   java.lang.RuntimeException: No session is bound to current thread, a session must be created via Session.create 
+[info] and bound to the thread via 'work' or 'bindToCurrentThread'
+[info]  Usually this error occurs when a statement is executed outside of a transaction/inTrasaction block
+[info]   at org.squeryl.internals.Utils$.throwError(Utils.scala:95)
+[info]   at org.squeryl.Session$$anonfun$currentSession$2.apply(Session.scala:124)
+[info]   at org.squeryl.Session$$anonfun$currentSession$2.apply(Session.scala:124)
+[info]   at scala.Option.getOrElse(Option.scala:108)
+[info]   at org.squeryl.Session$.currentSession(Session.scala:123)
+[info]   at org.squeryl.dsl.AbstractQuery.org$squeryl$dsl$AbstractQuery$$_dbAdapter(AbstractQuery.scala:154)
+[info]   at org.squeryl.dsl.AbstractQuery$$anon$1.<init>(AbstractQuery.scala:158)
+[info]   at org.squeryl.dsl.AbstractQuery.iterator(AbstractQuery.scala:156)
+[info]   at scala.collection.IterableLike$class.exists(IterableLike.scala:78)
+[info]   at org.squeryl.dsl.AbstractQuery.exists(AbstractQuery.scala:27)
+[info]   ...

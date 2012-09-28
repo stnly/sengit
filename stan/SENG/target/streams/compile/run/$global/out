@@ -1,8 +1,21 @@
-[info] Running main.scala.Main 
+[info] Running main.scala.classes.Main 
 [debug] Starting sandboxed run...
 [debug] Waiting for threads to exit or System.exit to be called.
+[debug] Waiting for thread run-main to exit
 [debug]   Classpath:
 [debug] 	/home/stan/IdeaProjects/SENG/target/scala-2.9.2/classes
+[debug] 	/home/stan/IdeaProjects/SENG/lib/squeryl_2.9.2-0.9.5-2.jar
+[debug] 	/home/stan/IdeaProjects/SENG/lib/mysql-connector-java-5.1.10.jar
+[debug] 	/home/stan/IdeaProjects/SENG/lib/scala-compiler-2.9.2.jar
+[debug] 	/home/stan/IdeaProjects/SENG/lib/scalatest_2.9.2-2.0.M2.jar
+[debug] 	/home/stan/IdeaProjects/SENG/lib/junit-4.8.2.jar
+[debug] 	/home/stan/IdeaProjects/SENG/lib/scala-library-2.9.2.jar
+[debug] 	/home/stan/IdeaProjects/SENG/lib/cglib-nodep-2.2.jar
+[debug] 	/home/stan/IdeaProjects/SENG/lib/derby-10.7.1.1.jar
+[debug] 	/home/stan/IdeaProjects/SENG/lib/h2-1.2.127.jar
+[debug] 	/home/stan/IdeaProjects/SENG/lib/jtds-1.2.4.jar
+[debug] 	/home/stan/IdeaProjects/SENG/lib/scalap-2.9.2.jar
+[debug] 	/home/stan/IdeaProjects/SENG/lib/postgresql-8.4-701.jdbc4.jar
 [debug] 	/home/stan/.sbt/boot/scala-2.9.2/lib/scala-library.jar
 [debug] 	/home/stan/.ivy2/cache/org.squeryl/squeryl_2.9.2/jars/squeryl_2.9.2-0.9.5-2.jar
 [debug] 	/home/stan/.ivy2/cache/cglib/cglib-nodep/jars/cglib-nodep-2.2.jar
@@ -13,7 +26,8 @@
 [debug] 	/home/stan/.ivy2/cache/mysql/mysql-connector-java/jars/mysql-connector-java-5.1.10.jar
 [debug] 	/home/stan/.ivy2/cache/net.sourceforge.jtds/jtds/jars/jtds-1.2.4.jar
 [debug] 	/home/stan/.ivy2/cache/org.apache.derby/derby/jars/derby-10.7.1.1.jar
-[debug] Waiting for thread run-main to exit
+[debug] 	/home/stan/.ivy2/cache/com.typesafe/slick_2.10.0-M7/jars/slick_2.10.0-M7-0.11.1.jar
+[debug] 	/home/stan/.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.6.4.jar
 [debug] 	Thread run-main exited.
 [debug] Interrupting remaining threads (should be all daemons).
 [debug] Sandboxed run complete..

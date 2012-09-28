@@ -5,6 +5,7 @@ import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertFalse
 import junit.framework.Assert.fail
 import collection.mutable.{Set, Map}
+import main.scala.classes.Location
 import org.scalatest._
 
 
@@ -20,12 +21,12 @@ class PoSWareTest extends FunSuite {
   }
 
   test("Adding a Location") {
-    PoSWare.AddLocation("A")
-    assert(PoSWare.Location.contains("A"))
-    assert(PoSWare.Location.size === 1)
+    val location1 = new Location()
+    location1.AddLocation("A")
+
   }
 
-  test("Adding multiple Locations") {
+ /* test("Adding multiple Locations") {
     PoSWare.AddLocation("B")
     assert(PoSWare.Location.contains("B"))
     assert(PoSWare.Location.size === 2)
@@ -168,7 +169,7 @@ class PoSWareTest extends FunSuite {
     println(PoSWare.ActiveProd)
     println(PoSWare.Stock)
     println(PoSWare.Product)
-  }
+  }   */
 
 
 
