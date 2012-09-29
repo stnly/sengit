@@ -8,6 +8,7 @@ import main.scala.classes.Database._
 class Product (val productName: String, val expiryDate: Date, var price: BigDecimal) extends Basic{
 
   def this() = this("", Calendar.getInstance().getTime, 0.0)
+  //lazy val transactionsTable : ManyToOne[Transaction] = Database.transactionToProduct.right(this)
 
   val add = (name: String, expiry: Date, price: BigDecimal) => {
     require(!productTable.exists(p => p.productName.matches(name)))

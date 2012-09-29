@@ -31,9 +31,20 @@ object Database extends Schema {
   val frontstoreTable = table[Store]("store")
   val backstoreTable = table[Backstore]("backstore")
   val userTable = table[User]("user")
-  val transactionTable = table[Transaction]("transaction")
   val memberTable = table[Member]("member")
+  val reserveTable = table[Reserve]("reserve")
+  val transactionTable = table[Transaction]("transaction")
+  //val transactionToProduct = oneToManyRelation(transactionTable, productTable).via((t,p) => t.id === p.id)
+
 }
+/*
+trait OneToMany[M] extends Query[M]{
+
+  def assign(m:M):M
+  def associate(m:M):M
+  def deleteAll: Int
+}
+*/
 
 object Main {
   def main(args: Array[String]) {
@@ -52,16 +63,18 @@ object Main {
       create
       printDdl
 
-      userTable.insert(new User("admin",UserType.admin))
-      userTable.insert(new User("Stan",UserType.clerk))
-      userTable.insert(new User("Daniel",UserType.manager))
-      userTable.insert(new User("Mike",UserType.manager))
+      val user1 = new User()
+      user1.add("test",UserType.admin )
+      //userTable.insert(new User("admin",UserType.admin, true))
+      //userTable.insert(new User("Stan",UserType.clerk, true))
+      //userTable.insert(new User("Daniel",UserType.manager, true))
+      //userTable.insert(new User("Mike",UserType.manager, true))
 
       val query = userTable.where(a=> a.userType === UserType.manager)
       for (q <- query) {
         println(q.id+" "+q.name+" "+q.userType)
       }
-
+        /*
       val location1 = new Location()
       location1.add("A")
       location1.add("B")
@@ -76,10 +89,9 @@ object Main {
       store1.add("B")
       store1.printAll()
 
-      val product1 = new Product()
-      product1.add("Milk",Calendar.getInstance().getTime,10)
 
-      product1.printAll()
+
+
       product1.add("Bread",Calendar.getInstance().getTime,2)
       product1.printAll()
       val printAllUsers = for(u <- {from (userTable) (u => select(u))}) {
@@ -87,6 +99,19 @@ object Main {
       }
       printAllUsers
       location1.printAll()
+      */
+      val product1 = new Product()
+      product1.add("Milk",Calendar.getInstance().getTime,10)
+      product1.printAll()
+
+      val reserve1 = new Reserve()
+      reserve1.add("Daniel", Calendar.getInstance().getTime, "Milk", 10)
+      reserve1.printReservationByMember("Daniel")
+      reserve1.change("Daniel", "Milk", 3)
+      reserve1.printReservationByMember("Daniel")
+      reserve1.cancel("Daniel")
+      reserve1.printReservationByMember("Daniel")
+
     }
   }
 }
