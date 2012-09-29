@@ -1,4 +1,6 @@
 package main.scala.classes
+
+//import classes.PoSWare.Backstore
 import org.squeryl.PrimitiveTypeMode._
 import org.squeryl.Schema
 import org.squeryl.annotations
@@ -7,19 +9,12 @@ import adapters.H2Adapter
 import java.util.{Calendar, Date}
 import java.sql.Timestamp
 
-
-
 object UserType extends Enumeration {
   type UserType = Value
   val clerk = Value("Clerk")
   val manager = Value("Manager")
   val admin = Value("Admin")
 }
-
-/*class Product (val id:Long, val productName:String, val expiryDate:Date, var price:BigDecimal){
-  def this() = this(0, "", Calendar.getInstance().getTime, 0.0)
-} */
-
 
 object LocationType extends Enumeration {
   type LocationType = Value
@@ -29,34 +24,12 @@ object LocationType extends Enumeration {
   val backStore = Value(4,"BackStore")
 }
 
-import LocationType._
-//Location Class
-/*class Location (val id:Long, val locationName:String, val locationType:LocationType){
-  import Database._
-  def this() = this(0,"",LocationType.location)
-  val isLocation = location.where(l=>l.locationName === locationName).single
-  location.insert(new Location(0,"Mike",LocationType.location))
-
-}    */
-
-import UserType._
-
-class User (val id:Long, var name:String, var userType:UserType){
-  def this() = this(0,"",UserType.admin)
-}
-
-class Transaction(val id:Long, val product:Set[(String)], val amount:BigDecimal){
-  def this() = this(0,Set(""),0.0)
-}
-
-class Member (val id:Long, var name:String, var points:Long){
-  def this() = this(0,"",0)
-}
-
-
-object Database extends Schema{
+object Database extends Schema {
   val productTable = table[Product]("product")
   val locationTable = table[Location]("location")
+  val warehouseTable = table[Warehouse]("warehouse")
+  val frontstoreTable = table[Store]("store")
+  val backstoreTable = table[Backstore]("backstore")
   val userTable = table[User]("user")
   val transactionTable = table[Transaction]("transaction")
   val memberTable = table[Member]("member")
@@ -79,9 +52,10 @@ object Main {
       create
       printDdl
 
-      userTable.insert(new User(0,"Stan",UserType.manager))
-      userTable.insert(new User(1,"Daniel",UserType.manager))
-      userTable.insert(new User(2,"Mike",UserType.clerk))
+      userTable.insert(new User("admin",UserType.admin))
+      userTable.insert(new User("Stan",UserType.clerk))
+      userTable.insert(new User("Daniel",UserType.manager))
+      userTable.insert(new User("Mike",UserType.manager))
 
       val query = userTable.where(a=> a.userType === UserType.manager)
       for (q <- query) {
@@ -89,23 +63,30 @@ object Main {
       }
 
       val location1 = new Location()
-      location1.AddLocation("A")
-      location1.AddLocation("B")
-      val printAllLocations = for (l <- from(locationTable)(a=> select(a))) {println(l.id+" "+l.locationName+" "+l.locationType)}
-      printAllLocations
-      //val fullTable = (table:Table) => {from (table) (t => select(t))}
+      location1.add("A")
+      location1.add("B")
+      location1.printAll()
+      location1.add("C")
+
+      val warehouse1 = new Warehouse()
+      warehouse1.add("A")
+      warehouse1.printAll()
+
+      val store1 = new Store()
+      store1.add("B")
+      store1.printAll()
 
       val product1 = new Product()
-      product1.AddProduct("Milk",Calendar.getInstance().getTime(),10)
-      val printAllProducts = for(p <- {from (productTable) (t => select(t))}) {
-        println(p.id+" "+p.productName+" "+p.expiryDate+" "+p.price)
-      }
-      printAllProducts
+      product1.add("Milk",Calendar.getInstance().getTime,10)
 
+      product1.printAll()
+      product1.add("Bread",Calendar.getInstance().getTime,2)
+      product1.printAll()
       val printAllUsers = for(u <- {from (userTable) (u => select(u))}) {
         println(u.id+" "+u.name+" "+u.userType)
       }
       printAllUsers
+      location1.printAll()
     }
   }
 }

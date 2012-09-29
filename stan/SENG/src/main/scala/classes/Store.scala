@@ -1,14 +1,34 @@
 package main.scala.classes
 
-import classes.PoSWare
+//import classes.PoSWare
+import main.scala.classes.LocationType._
+import main.scala.classes.Database._
+import org.squeryl.PrimitiveTypeMode._
+
 //import main.scala.classes.{Product, Location}
 import collection.mutable.{Set,Map}
 
 //Store Class
-class Store() extends Location (){
+class Store(locationName: String, locationType: LocationType) extends Location (locationName: String, locationType: LocationType){
 
+  def this() = this("", LocationType.location)
 
-  def RemProductStoreFront(Product:Product, Location:Location) {
+  override val add = (name: String) => {
+    require(locationTable.exists(l => l.locationName.matches(name)))
+    require(!warehouseTable.exists(l => l.locationName.matches(name)))
+    require(!frontstoreTable.exists(l => l.locationName.matches(name)))
+    frontstoreTable.insert(new Store(name,LocationType.frontStore))
+    backstoreTable.insert(new Backstore(name,LocationType.backStore))
+  }
+
+  override def printAll() {
+    for (l <- from(frontstoreTable)(a => select(a))) {
+      println(l.id + " " + l.locationName + " " + l.locationType)
+    }
+  }
+
+  //TODO Convert to Squeryl
+  /*def RemProductStoreFront(Product:Product, Location:Location) {
     require(PoSWare.Product.contains(Product.id))
     require(PoSWare.Store.contains(Location.id))
     require(!PoSWare.Warehouse.contains(Location.id))
@@ -20,6 +40,7 @@ class Store() extends Location (){
     PoSWare.Stock.update(Set(Location->Product),0)
   }
 
+  //TODO Convert to Squeryl
   //TODO  AddProductStoreFront Event
   def AddProductStoreFront(Product:Product, Location:Location, Stock:String) {
     require(PoSWare.Product.contains(Product.id))
@@ -46,5 +67,5 @@ class Store() extends Location (){
     require(PoSWare.Users.contains(user))
     require(PoSWare.Auth.apply(user) == "Manager")
     PoSWare.ReorderLevel.update(Set(Location->Product),level)
-  }
+  } */
 }

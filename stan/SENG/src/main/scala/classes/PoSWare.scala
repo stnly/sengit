@@ -2,7 +2,7 @@ package classes
 import main.scala.classes._
 import collection.mutable.{Set,Map}
 import collection.mutable
-
+/*
 object PoSWare {
 
   //Initialise Store Set in PoSWare machine
@@ -31,41 +31,19 @@ object PoSWare {
   var ReorderLevel:Map[Set[(Location,Product)], Int] = Map()
 
 
-  /**
-   * AddLocation Event.
-   * @param LocationID
-   *                   LocationID:String should not exist in the set of PoSWare.Location
-   */
-  /*def AddLocation(LocationID:String):Location = {
-    require(!PoSWare.Location.contains(LocationID))
-    PoSWare.Location += LocationID
-    new Location(LocationID)
-  }*/
-  /*val AddLocation = (ID:Long) => {
-    require(!PoSWare.Location.contains(ID))
-    PoSWare.Location += ID
-    new Location(ID)
-  }  */
+
 
   //TODO extension in WarehouseR1
   //AddStore Event
-  def AddStore(LocationID:Long):(Location,Location) = {
+  /*def AddStore(LocationID:Long):(Location,Location) = {
     require(PoSWare.Location.contains(LocationID))
     require(!PoSWare.Store.contains(LocationID))
     require(!PoSWare.Warehouse.contains(LocationID))
     PoSWare.Store += LocationID
     (new Backstore(), new Store())
-  }
+  } */
 
-  //AddWarehouse Event
-  def AddWarehouse(LocationID:Long):Warehouse = {
-    require(PoSWare.Location.contains(LocationID))
-    require(!PoSWare.Store.contains(LocationID))
-    require(!PoSWare.Warehouse.contains(LocationID))
-    PoSWare.Warehouse += LocationID //add to database
 
-    new Warehouse()
-  }
 
   //StoreArea ∈ Store ↔ STORELOCATION
   var StoreArea:Map[Store,String] = Map()
@@ -87,12 +65,12 @@ object PoSWare {
     require(!Product.contains(ProductID))
     Product += ProductID
     new Product(ProductID)
-  }*/
+  }
   val AddProductList = (id:Long) => {
     require(!Product.contains(id))
     Product += id
     //new Product(id)
-  }
+  } */
   /**
    * AddProductLocation Event
    * I'm not sure if it is meant to take in a Product class and Location class in respect to the Event-B.
@@ -104,6 +82,7 @@ object PoSWare {
    * @param stock
    *                An Integer, should be 0.
    */
+  //TODO Convert to Squeryl
   def AddProductLocation(Product:Product, Location:Location, stock:Int) {
     require(PoSWare.Product.contains(Product.id))
     //require(PoSWare.Location.contains(Location.ID))
@@ -121,4 +100,4 @@ object PoSWare {
   }
 
 }
-
+*/

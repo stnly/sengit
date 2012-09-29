@@ -7,18 +7,23 @@ import org.squeryl._
 import adapters.H2Adapter
 import java.util.{Calendar, Date}
 import java.sql.Timestamp
-import Database.locationTable
+import main.scala.classes.Database._
 import LocationType._
 
-class Location (val locationName:String, val locationType:LocationType) extends BasicEntry {
+class Location (val locationName: String, val locationType: LocationType) extends Basic {
 
 
   def this() = this("", LocationType.location)
 
-  val AddLocation = (locationName:String) => {
-    val check = locationTable.exists(l => l.locationName.matches(locationName))
-    require(!check)
-    locationTable.insert(new Location(locationName,LocationType.location))
+  val add = (name: String) => {
+    require(!locationTable.exists(l => l.locationName.matches(name)))
+    locationTable.insert(new Location(name,LocationType.location))
+  }
+
+  def printAll() {
+    for (l <- from(locationTable)(a => select(a))) {
+      println(l.id + " " + l.locationName + " " + l.locationType)
+    }
   }
 
 }
