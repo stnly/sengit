@@ -9,9 +9,9 @@ class Product (val productName: String, val expiryDate: Date, var price: BigDeci
 
   def this() = this("", Calendar.getInstance().getTime, 0.0)
 
-  val add = (name: String, expiry: Date, price: BigDecimal) => {
-    require(!productTable.exists(p => p.productName.matches(name)))
-    productTable.insert(new Product(name, expiry, price))
+  val add = () => {
+    require(!productTable.exists(p => p.productName.matches(this.productName)))
+    productTable.insert(this)
   }
 
   def printAll() {

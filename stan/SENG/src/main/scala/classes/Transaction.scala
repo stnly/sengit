@@ -3,11 +3,11 @@ import org.squeryl._
 import org.squeryl.PrimitiveTypeMode._
 import main.scala.classes.Database._
 
-class Transaction (val user: String, member: String) extends Basic {
-  def this() = this("","")
-  def newTransaction (user: String, member: String) : Long ={
-    transactionTable.insert(new Transaction(user, member ))
-    println("creating new transaction: "+ id)
+class Transaction (val user: String, val member: String, var active: Boolean) extends Basic {
+  def this(user: String, member:String) = this(user,member, true)
+  def newTransaction () : Long ={
+    transactionTable.insert(this)
+    //println("creating new transaction: " + this.id)
     return this.id
   }
   def voidTransaction(id : Long) {
@@ -15,16 +15,19 @@ class Transaction (val user: String, member: String) extends Basic {
     purchaseTable.deleteWhere(p => p.transactionId === id)
     transactionTable.deleteWhere((p => p.id === id))
   }
+  def checkOut(){
+    update(transactionTable)(t=>
+    where(t.id === this.id)
+    set(t.active := false) )
+  }
 
-  def checkOut(id : Long){
+  def calculateTotal() :BigDecimal ={
+    var total: BigDecimal = 0
     for (pur <- from(purchaseTable)(pur => where(pur.transactionId === id)select(pur))) {
-      println(pur.productName)
-      from(productTable)(p => where(p.id === pur.productId) select(p))
-
-      //from(activeProductTable)(ap => where(p.Product === ap.productName) select(ap))
-      //total += ap.price;
+      val n = productTable.where(p => p.id === pur.productId).single
+      total = total + n.price
     }
-    //calculate cost
+    return total
   }
 
   def isProductInTransaction(productId: Long) :Boolean = {
@@ -33,8 +36,8 @@ class Transaction (val user: String, member: String) extends Basic {
     return false
   }
 
-  def transactionExists(transactionId: Long) :Boolean = {
-    if (transactionTable.exists(t => t.id == transactionId))
+  def transactionExists() :Boolean = {
+    if (transactionTable.exists(t => t.id == this.id))
       return true
     return false
   }
@@ -44,32 +47,24 @@ class Transaction (val user: String, member: String) extends Basic {
   }
 
 
-  def getTransactionUser(transactionId: Long) :String = {
-    var name = ""
-    for (t <- from(transactionTable)(t => where(t.id === transactionId)select(t))) {
-      name = t.user
-      //from(activeProductTable)(ap => where(p.Product === ap.productName) select(ap))
-      //total += ap.price;
-    }
-    return name
-    //val u = transactionTable.where(t => t.id === transactionId).single
-    //return u.user
+  def getTransactionUser() :String = {
+    val u = transactionTable.where(t => t.id === this.id).single
+    return u.user
   }
+
+  def addProductToTransaction(productId: Long){
+    //product table
+    purchaseTable.insert(new Purchase(this.id, productId))
+  }
+
+  // RemProdTrolley
+  def removeProductFromTransaction(id: Long, productName: String, productId: Long){
+    purchaseTable.deleteWhere(p=>
+      p.transactionId === id and p.productId === productId )
+  }
+
 }
   //transaction to product
-class Purchase(val transactionId: Long, val productName: String, var productId: Long, val active: Boolean){
-  def this() = this(0, "", 0, true)
-
-
-    //AddProdTrolley
-  def addProductToTransaction(id: Long, productName: String, productId: Long){
-      //product table
-      purchaseTable.insert(new Purchase(id, productName, productId, true))
-  }
-
-    // RemProdTrolley
-  def removeProductFromTransaction(id: Long, productName: String, productId: Long){
-      purchaseTable.deleteWhere(p=>
-        p.transactionId === id and p.productName === productName and p.productId === productId )
-  }
+class Purchase(val transactionId: Long, var productId: Long){
+  def this() = this(0, 0)
 }

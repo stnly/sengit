@@ -7,17 +7,25 @@ import org.squeryl.PrimitiveTypeMode._
 class User (val name: String, var userType: UserType, val active: Boolean) extends Basic {
   def this() = this("", UserType.admin, true)
 
-  def add (name: String, userType: UserType){
-    require(!userTable.exists(u => u.name.matches(name)))
-    userTable.insert(new User(name, userType, true))
+  def add (){
+    require(!userTable.exists(u => u.name.matches(this.name)))
+    userTable.insert(this)
   }
   //delete user
-  def deactivate(name: String){
+  def deactivate(){
     update(userTable)(u =>
-      where(u.name === name)
+      where(u.name === this.name)
         set (u.active := false))
   }
-  def isManager(name: String) :Boolean = {
-    return (userTable.exists(u => u.name.matches(name) && u.userType == UserType.manager))
+       /*
+  def getTransactionUser() :String = {
+    val u = transactionTable.where(t => t.id === this.id).single
+    return u.user
+  }
+  */
+
+  def isManager() :Boolean = {
+    val n = userTable.where(u => u.id === this.id).single
+    return n.userType == UserType.manager
   }
 }

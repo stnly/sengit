@@ -35,7 +35,7 @@ object Database extends Schema {
   val reserveTable = table[Reserve]("reserve")
   val transactionTable = table[Transaction]("transaction")
   val purchaseTable = table[Purchase]("purchase")
-
+  val reservedproductTable = table[ReservedProduct]("reservedproduct")
 }
 object Main {
   def main(args: Array[String]) {
@@ -54,14 +54,14 @@ object Main {
       create
       printDdl
 
-      val user1 = new User()
-      user1.add("test",UserType.manager )
+      val user1 = new User("test",UserType.manager, false )
+      user1.add()
       //userTable.insert(new User("admin",UserType.admin, true))
       //userTable.insert(new User("Stan",UserType.clerk, true))
       //userTable.insert(new User("Daniel",UserType.manager, true))
       //userTable.insert(new User("Mike",UserType.manager, true))
 
-      println(user1.isManager("test"))
+      println("user 1 is a manager " + user1.isManager())
 
       val query = userTable.where(a=> a.userType === UserType.manager)
       for (q <- query) {
@@ -89,23 +89,25 @@ object Main {
       printAllUsers
       location1.printAll()
       */
-      val product1 = new Product()
-      product1.add("Milk",Calendar.getInstance().getTime,10)
+      val product1 = new Product("Milk",Calendar.getInstance().getTime,10.00)
+      val product2 = new Product("Cheese",Calendar.getInstance().getTime,4.00)
+      product2.add()
+      product1.add()
       product1.printAll()
 
-      val member1 = new Member()
-      member1.add("test")
-      member1.addPoint("test", 10)
-      println("added 10 point" + member1.checkPoints("test") )
-      member1.removePoint("test", 5)
-      println("added 10 point" + member1.checkPoints("test") )
-      val transaction1 = new Transaction()
-      val transaction2 = new Transaction()
-      transaction1.newTransaction("Daniel", "test")
-      transaction
-      println(transaction1.id)
-
-      transaction1.getTransactionUser(1)
+      val member1 = new Member("test")
+      member1.add()
+      member1.addPoint(10)
+      println("added 10 points = member1.checkPoints()"  )
+      member1.removePoint(5)
+      println("removed 5 points = member1.checkPoints()"  )
+      val transaction1 = new Transaction("Daniel", "test")
+      println("is it a transction : " + transaction1.transactionExists()  )
+      transaction1.newTransaction()
+      transaction1.addProductToTransaction(product1.id)
+      transaction1.addProductToTransaction(product2.id)
+      println("the user for transaction1 is "+ transaction1.getTransactionUser())
+      println("the price for transaction1 is "+ transaction1.calculateTotal())
 
 
 
