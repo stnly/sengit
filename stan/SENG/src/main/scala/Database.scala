@@ -9,6 +9,7 @@ import adapters.H2Adapter
 import java.util.{Calendar, Date}
 import java.sql.Timestamp
 
+
 object UserType extends Enumeration {
   type UserType = Value
   val clerk = Value("Clerk")
@@ -37,7 +38,13 @@ object Database extends Schema {
   val purchaseTable = table[Purchase]("purchase")
   val reservedproductTable = table[ReservedProduct]("reservedproduct")
   val activeproductTable = table[ActiveProducts]("activeproduct")
+  val locationToProduct = oneToManyRelation(locationTable, productTable).via((l,p) => l.id === p.locationId )
+
+  override def applyDefaultForeignKeyPolicy(foreignKeyDeclaration: ForeignKeyDeclaration)
+  = foreignKeyDeclaration.constrainReference
+  locationToProduct.foreignKeyDeclaration.constrainReference(onDelete cascade)
 }
+
 object Main {
   def main(args: Array[String]) {
     import Database._
@@ -68,6 +75,23 @@ object Main {
       for (q <- query) {
         println(q.id+" "+q.name+" "+q.userType)
       }
+
+      val location2 = new Location("A")
+      location2.add()
+      //location2.setLocAsWarehouse()
+      val product1 = new Product("String", Calendar.getInstance().getTime, 10)
+      location2.products.associate(product1)
+      product1.add()
+
+      //println(product1.locations.single.locationName)
+
+      val l = from(locationTable)(l=>
+        where(l.id in
+          from (productTable)(p=> where(l.id === p.id) select(p.id)))
+        select(l)
+      ).single
+      println(l.locationName)
+
         /*
       val location1 = new Location()
       location1.add("A")
@@ -111,7 +135,7 @@ object Main {
       println("the user for transaction1 is "+ transaction1.getTransactionUser())
       println("the price for transaction1 is "+ transaction1.calculateTotal())
 
-      */
+
       val location1 = new Location("A")
       val location2 = new Location("B")
       val location3 = new Warehouse("C")
@@ -121,7 +145,7 @@ object Main {
       location3.add()
       println("id of location1 is "+ location1.getId())
       location1.setLocAsWarehouse()
-
+         */
 
      // val purchase1 = new Purchase()
      // purchase1.addProductToTransaction(1, "Milk")
