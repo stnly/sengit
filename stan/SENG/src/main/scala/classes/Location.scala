@@ -12,13 +12,40 @@ import LocationType._
 
 class Location (val locationName: String, val locationType: LocationType) extends Basic {
 
+  def this(locationName: String) = this(locationName, LocationType.location)
 
-  def this() = this("", LocationType.location)
-
-  val add = (name: String) => {
-    require(!locationTable.exists(l => l.locationName.matches(name)))
-    locationTable.insert(new Location(name,LocationType.location))
+  def add () {
+    locationTable.insert(this)
   }
+
+  def getId(): Long ={
+    val n = locationTable.where(l=>l.id === this.id).single
+    return n.id
+  }
+
+  def setLocAsWarehouse() {
+    update(locationTable)(l=>
+      where(this.id === l.id)
+        set(l.locationType := LocationType.warehouse))
+    var w = new Warehouse(this.locationName)
+    warehouseTable.insert(w)
+    //unavoidable auto incremented id
+    //update to fix this so that it uses the key from location
+    update(warehouseTable)(w=>
+      where(w.locationName === this.locationName)
+        set(w.id := this.id) )
+  }
+
+  def setLocAsStore() :Long = {
+    //warehouseTable.insert()
+    return 0   //warehouse id
+  }
+
+  def setLocAsBackstore() :Long = {
+ //   warehouseTable.insert()
+    return 0   //warehouse id
+  }
+
 
   def printAll() {
     for (l <- from(locationTable)(a => select(a))) {
@@ -27,3 +54,4 @@ class Location (val locationName: String, val locationType: LocationType) extend
   }
 
 }
+

@@ -27,3 +27,32 @@ class Product (val productName: String, val expiryDate: Date, var price: BigDeci
 
   }
 }
+
+class ActiveProducts (val productName: String, var price: BigDecimal, var active: Boolean) extends Basic{
+  def this(productName: String) = this(productName, 0, true)
+  def this(productName: String, price: BigDecimal) = this(productName, price, true)
+  def add(){
+    activeproductTable.insert(this)
+  }
+  def getPrice(productName: String) : BigDecimal ={
+    val n = activeproductTable.where(ap => ap.productName === productName).single
+    return n.price
+  }
+
+  def changePrice(newPrice: BigDecimal){
+    update(activeproductTable)(ap=>
+      where(ap.productName === this.productName)
+        set (ap.price := newPrice))
+  }
+
+  def GetIdFromProduct():Long={
+    val n = activeproductTable.where(ap => ap.productName === this.productName).single
+    return n.id
+  }
+
+  def exist(): Boolean={
+    return activeproductTable.exists(ap => ap.productName.matches(this.productName))
+  }
+
+
+}

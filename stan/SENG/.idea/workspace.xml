@@ -91,10 +91,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Product.scala" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Product.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Product.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="64" selection-start="591" selection-end="591" vertical-scroll-proportion="0.0">
+            <state line="32" column="8" selection-start="1055" selection-end="1055" vertical-scroll-proportion="1.4020618">
               <folding>
                 <element signature="e#28#66#0" expanded="true" />
               </folding>
@@ -114,7 +114,7 @@
       <file leaf-file-name="Reserve.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Reserve.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="32" selection-start="1020" selection-end="1020" vertical-scroll-proportion="0.0">
+            <state line="9" column="1" selection-start="270" selection-end="324" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#28#64#0" expanded="true" />
               </folding>
@@ -122,13 +122,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Database.scala" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Database.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/Database.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="93" column="14" selection-start="2993" selection-end="2993" vertical-scroll-proportion="0.29166666">
+            <state line="38" column="24" selection-start="1249" selection-end="1267" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#63#101#0" expanded="true" />
-                <element signature="e#1297#1314#0" expanded="true" />
+                <element signature="e#1363#1380#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -137,10 +137,30 @@
       <file leaf-file-name="Location.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Location.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="46" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0">
+            <state line="22" column="48" selection-start="609" selection-end="609" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#28#66#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Warehouse.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Warehouse.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="0" selection-start="860" selection-end="860" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#53#89#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Store.scala" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Store.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="28" selection-start="479" selection-end="479" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -159,7 +179,7 @@
       <file leaf-file-name="Transaction.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Transaction.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="10" selection-start="669" selection-end="669" vertical-scroll-proportion="-11.56">
+            <state line="50" column="57" selection-start="1558" selection-end="1565" vertical-scroll-proportion="-10.2">
               <folding>
                 <element signature="e#27#47#0" expanded="true" />
               </folding>
@@ -170,7 +190,7 @@
       <file leaf-file-name="User.scala" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/scala/classes/User.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="0" selection-start="708" selection-end="807" vertical-scroll-proportion="0.0">
+            <state line="28" column="40" selection-start="806" selection-end="807" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#27#44#0" expanded="true" />
               </folding>
@@ -192,18 +212,18 @@
         <option value="$PROJECT_DIR$/src/main/scala/Slick.scala" />
         <option value="$PROJECT_DIR$/src/test/scala/PoSWareTest.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/classes/BasicEntry.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/classes/Location.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/classes/Basic.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/classes/PoSWare.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/classes/Backstore.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/classes/Warehouse.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/classes/Store.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/classes/User.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/classes/Member.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/classes/Reserve.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/classes/Transaction.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/classes/Product.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/classes/Store.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/classes/Warehouse.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/classes/Location.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/Database.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/classes/Product.scala" />
       </list>
     </option>
   </component>
@@ -211,8 +231,8 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="280" />
-    <option name="y" value="62" />
+    <option name="x" value="329" />
+    <option name="y" value="50" />
     <option name="width" value="1331" />
     <option name="height" value="924" />
   </component>
@@ -625,7 +645,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="280" y="62" width="1331" height="924" extended-state="0" />
+    <frame x="329" y="50" width="1331" height="924" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -732,11 +752,6 @@
         <state line="10" column="35" selection-start="294" selection-end="294" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Store.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="9" selection-start="1715" selection-end="1715" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Backstore.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="27" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0" />
@@ -761,65 +776,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Warehouse.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="11" selection-start="1314" selection-end="1314" vertical-scroll-proportion="1.5492611">
-          <folding>
-            <element signature="e#53#89#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Reserve.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="32" selection-start="1020" selection-end="1020" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#28#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Basic.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="20" selection-start="119" selection-end="119" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Product.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="64" selection-start="591" selection-end="591" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#28#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/classes/User.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="708" selection-end="807" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#27#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Transaction.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="10" selection-start="669" selection-end="669" vertical-scroll-proportion="-11.56">
-          <folding>
-            <element signature="e#27#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Location.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="46" selection-start="381" selection-end="381" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#28#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Member.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state line="38" column="23" selection-start="903" selection-end="907" vertical-scroll-proportion="0.0">
@@ -829,12 +785,78 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Basic.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="20" selection-start="119" selection-end="119" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Transaction.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="57" selection-start="1558" selection-end="1565" vertical-scroll-proportion="-10.2">
+          <folding>
+            <element signature="e#27#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Store.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="28" selection-start="479" selection-end="479" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Warehouse.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="0" selection-start="860" selection-end="860" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#53#89#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/Database.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="14" selection-start="2993" selection-end="2993" vertical-scroll-proportion="0.29166666">
+        <state line="38" column="24" selection-start="1249" selection-end="1267" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#63#101#0" expanded="true" />
-            <element signature="e#1297#1314#0" expanded="true" />
+            <element signature="e#1363#1380#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Location.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="48" selection-start="609" selection-end="609" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#28#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/classes/User.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="40" selection-start="806" selection-end="807" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#27#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Reserve.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="1" selection-start="270" selection-end="324" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#28#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/classes/Product.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="8" selection-start="1055" selection-end="1055" vertical-scroll-proportion="1.4020618">
+          <folding>
+            <element signature="e#28#66#0" expanded="true" />
           </folding>
         </state>
       </provider>

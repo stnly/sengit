@@ -36,6 +36,7 @@ object Database extends Schema {
   val transactionTable = table[Transaction]("transaction")
   val purchaseTable = table[Purchase]("purchase")
   val reservedproductTable = table[ReservedProduct]("reservedproduct")
+  val activeproductTable = table[ActiveProducts]("activeproduct")
 }
 object Main {
   def main(args: Array[String]) {
@@ -89,6 +90,7 @@ object Main {
       printAllUsers
       location1.printAll()
       */
+      /*
       val product1 = new Product("Milk",Calendar.getInstance().getTime,10.00)
       val product2 = new Product("Cheese",Calendar.getInstance().getTime,4.00)
       product2.add()
@@ -109,6 +111,16 @@ object Main {
       println("the user for transaction1 is "+ transaction1.getTransactionUser())
       println("the price for transaction1 is "+ transaction1.calculateTotal())
 
+      */
+      val location1 = new Location("A")
+      val location2 = new Location("B")
+      val location3 = new Warehouse("C")
+      val location4 = new Warehouse("D")
+      location1.add()
+      location2.add()
+      location3.add()
+      println("id of location1 is "+ location1.getId())
+      location1.setLocAsWarehouse()
 
 
      // val purchase1 = new Purchase()

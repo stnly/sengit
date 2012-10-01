@@ -41,11 +41,11 @@ class Transaction (val user: String, val member: String, var active: Boolean) ex
       return true
     return false
   }
-
+         /*
   def getProductsInTransaction(transactionId: Long) {
     from(purchaseTable)(p=> where(p.transactionId === transactionId) select(p))
   }
-
+         */
 
   def getTransactionUser() :String = {
     val u = transactionTable.where(t => t.id === this.id).single
@@ -58,7 +58,7 @@ class Transaction (val user: String, val member: String, var active: Boolean) ex
   }
 
   // RemProdTrolley
-  def removeProductFromTransaction(id: Long, productName: String, productId: Long){
+  def removeProductFromTransaction(productId: Long){
     purchaseTable.deleteWhere(p=>
       p.transactionId === id and p.productId === productId )
   }

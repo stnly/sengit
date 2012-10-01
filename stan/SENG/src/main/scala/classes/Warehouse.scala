@@ -22,20 +22,15 @@ class Warehouse(locationName:String, locationType:LocationType) extends Location
     PoSWare.Warehouse += LocationID //add to database
     new Warehouse()
   } */
-  def this() = this("", LocationType.location)
 
-  override val add = (name:String) => {
-    require(locationTable.exists(l => l.locationName.matches(name)))
-    require(!warehouseTable.exists(l => l.locationName.matches(name)))
-    require(!frontstoreTable.exists(l => l.locationName.matches(name)))
-    warehouseTable.insert(new Warehouse(name,LocationType.warehouse))
-  }
-
+  def this(locationName: String) = this(locationName, LocationType.location)
   override def printAll() {
     for (l <- from(warehouseTable)(a => select(a))) {
       println(l.id + " " + l.locationName + " " + l.locationType)
     }
   }
+
+
 
   //TODO Convert to Squeryl
   /*def RestockWH(Product:Product, addAmount:Int) {
@@ -74,5 +69,6 @@ class Warehouse(locationName:String, locationType:LocationType) extends Location
     require(level == PoSWare.ReorderLevel.apply(Set(this->Product)))
     PoSWare.Order.update(Set(this->Product), level)
   }*/
+
 
 }

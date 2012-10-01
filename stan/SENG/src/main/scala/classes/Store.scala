@@ -9,16 +9,12 @@ import org.squeryl.PrimitiveTypeMode._
 import collection.mutable.{Set,Map}
 
 //Store Class
-class Store(locationName: String, locationType: LocationType) extends Location (locationName: String, locationType: LocationType){
+class Store(locationName: String, locationType: LocationType) extends Location (locationName:String, locationType:LocationType){
 
-  def this() = this("", LocationType.location)
+  def this(locationName: String) = this(locationName, LocationType.frontStore)
 
-  override val add = (name: String) => {
-    require(locationTable.exists(l => l.locationName.matches(name)))
-    require(!warehouseTable.exists(l => l.locationName.matches(name)))
-    require(!frontstoreTable.exists(l => l.locationName.matches(name)))
-    frontstoreTable.insert(new Store(name,LocationType.frontStore))
-    backstoreTable.insert(new Backstore(name,LocationType.backStore))
+  override def add() {
+    frontstoreTable.insert(this)
   }
 
   override def printAll() {
