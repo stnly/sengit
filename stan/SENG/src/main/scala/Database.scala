@@ -85,12 +85,27 @@ object Main {
 
       //println(product1.locations.single.locationName)
 
+      //relation query example
       val l = from(locationTable)(l=>
         where(l.id in
           from (productTable)(p=> where(l.id === p.id) select(p.id)))
         select(l)
       ).single
       println(l.locationName)
+
+      //join example
+      //from(locationTable, productTable)((l,p)=>
+      //  where(l.locationType === LocationType.location and l.id === p.locationId)
+      //    select(p))
+
+      val pro =from(locationTable, productTable)((l,p)=>
+        where(l.locationType === LocationType.location and l.id === p.locationId)
+          select(p)).toList
+      println(pro)
+      /*
+
+
+       */
 
         /*
       val location1 = new Location()
