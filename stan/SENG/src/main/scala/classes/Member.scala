@@ -23,17 +23,20 @@ class Member (var name: String, var points: Long) extends Basic {
   }
 
 
- /*
+
   def checkPoints(name: String):Long = {
-    val point
-    for(m <- from(memberTable)(m =>
-      where(m.name === name) select(m)) {
-      point = m.point
+            /*
+    val point: Long =
+      from(memberTable)(m =>
+        where(m.name === name) )
+              */
+
+    var point :Long= 0
+    for(m <- {from (memberTable) (m => where(name === m.name) select(m))} ){
+      point = point + m.points
     }
     return point
   }
-       */
-
   def addPoint(name : String, points : Long){
     update(memberTable)(m=>
     where (m.name === name)

@@ -93,6 +93,25 @@ object Main {
       product1.add("Milk",Calendar.getInstance().getTime,10)
       product1.printAll()
 
+      val member1 = new Member()
+      member1.add("test")
+      member1.addPoint("test", 10)
+      println("added 10 point" + member1.checkPoints("test") )
+      member1.removePoint("test", 5)
+      println("added 10 point" + member1.checkPoints("test") )
+      val transaction1 = new Transaction()
+      val transaction2 = new Transaction()
+      transaction1.newTransaction("Daniel", "test")
+      transaction
+      println(transaction1.id)
+
+      transaction1.getTransactionUser(1)
+
+
+
+     // val purchase1 = new Purchase()
+     // purchase1.addProductToTransaction(1, "Milk")
+
 
              /*
       val reserve1 = new Reserve()
