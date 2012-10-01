@@ -11,9 +11,16 @@ class User (val name: String, var userType: UserType, val active: Boolean) exten
     require(!userTable.exists(u => u.name.matches(name)))
     userTable.insert(new User(name, userType, true))
   }
+  //delete user
+  def deactivate(name: String){
+    update(userTable)(u =>
+      where(u.name === name)
+        set (u.active := false))
+  }
+  def isManager(name: String) :Boolean = {
+    return (userTable.exists(u => u.name.matches(name) && u.userType == UserType.manager))
+  }
 }
-
-
      /*
 
 class Product (val productName: String, val expiryDate: Date, var price: BigDecimal) extends Basic{

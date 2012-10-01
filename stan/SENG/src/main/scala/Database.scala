@@ -34,18 +34,9 @@ object Database extends Schema {
   val memberTable = table[Member]("member")
   val reserveTable = table[Reserve]("reserve")
   val transactionTable = table[Transaction]("transaction")
-  //val transactionToProduct = oneToManyRelation(transactionTable, productTable).via((t,p) => t.id === p.id)
+  val purchaseTable = table[Purchase]("purchase")
 
 }
-/*
-trait OneToMany[M] extends Query[M]{
-
-  def assign(m:M):M
-  def associate(m:M):M
-  def deleteAll: Int
-}
-*/
-
 object Main {
   def main(args: Array[String]) {
     import Database._
@@ -64,11 +55,13 @@ object Main {
       printDdl
 
       val user1 = new User()
-      user1.add("test",UserType.admin )
+      user1.add("test",UserType.manager )
       //userTable.insert(new User("admin",UserType.admin, true))
       //userTable.insert(new User("Stan",UserType.clerk, true))
       //userTable.insert(new User("Daniel",UserType.manager, true))
       //userTable.insert(new User("Mike",UserType.manager, true))
+
+      println(user1.isManager("test"))
 
       val query = userTable.where(a=> a.userType === UserType.manager)
       for (q <- query) {
@@ -88,10 +81,6 @@ object Main {
       val store1 = new Store()
       store1.add("B")
       store1.printAll()
-
-
-
-
       product1.add("Bread",Calendar.getInstance().getTime,2)
       product1.printAll()
       val printAllUsers = for(u <- {from (userTable) (u => select(u))}) {
@@ -104,6 +93,8 @@ object Main {
       product1.add("Milk",Calendar.getInstance().getTime,10)
       product1.printAll()
 
+
+             /*
       val reserve1 = new Reserve()
       reserve1.add("Daniel", Calendar.getInstance().getTime, "Milk", 10)
       reserve1.printReservationByMember("Daniel")
@@ -111,7 +102,7 @@ object Main {
       reserve1.printReservationByMember("Daniel")
       reserve1.cancel("Daniel")
       reserve1.printReservationByMember("Daniel")
-
+            */
     }
   }
 }

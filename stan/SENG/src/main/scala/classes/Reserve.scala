@@ -13,7 +13,7 @@ class Reserve (val memberName: String,  var pickupDate: Date, val productName: S
     //if(reserveTable.exists(r => r.memberName.matches(memberName) and r.productName.matches(productName))){
     //  change(memberName, productName, itemQty)
     //} else {
-      reserveTable.insert(new Reserve(memberName, pickupDate, productName, qty))
+      reserveTable.insert(new Reserve(memberName, pickupDate, productName, itemQty))
     //}
   }
 
@@ -47,7 +47,7 @@ class Reserve (val memberName: String,  var pickupDate: Date, val productName: S
     */
     val prodInTransaction = Set("")
     val total = 100
-    transactionTable.insert(new Transaction(prodInTransaction, total))
+    //transactionTable.insert(new Transaction(prodInTransaction, total))
   }
 
  def printReservationByMember(member : String){
