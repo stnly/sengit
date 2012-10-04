@@ -1,0 +1,6 @@
+#ignore the SENG.iml that keeps changing
+*.iml
+project/
+lib/
+target/
+

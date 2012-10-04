@@ -84,7 +84,7 @@
       <file leaf-file-name="Database.scala" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/Database.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="389" column="25" selection-start="11688" selection-end="11688" vertical-scroll-proportion="0.5165877">
+            <state line="103" column="25" selection-start="3069" selection-end="3069" vertical-scroll-proportion="0.6494845">
               <folding>
                 <element signature="e#63#101#0" expanded="true" />
                 <element signature="e#2865#2882#0" expanded="true" />
@@ -167,10 +167,10 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="317" />
-    <option name="y" value="81" />
-    <option name="width" value="1237" />
-    <option name="height" value="854" />
+    <option name="x" value="517" />
+    <option name="y" value="617" />
+    <option name="width" value="1022" />
+    <option name="height" value="855" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -459,14 +459,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="317" y="81" width="1237" height="854" extended-state="0" />
-    <editor active="true" />
+    <frame x="517" y="617" width="1022" height="855" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38744885" sideWeight="0.99220574" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="SBT Console" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.386921" sideWeight="0.99220574" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21303657" sideWeight="0.5007886" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24642557" sideWeight="0.61255115" order="1" side_tool="true" content_ui="tabs" />
@@ -475,7 +475,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24978974" sideWeight="0.61255115" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299293" sideWeight="0.6998689" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3998429" sideWeight="0.6998689" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24642557" sideWeight="0.61255115" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30082136" sideWeight="0.613079" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290938" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -601,7 +601,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/Database.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="389" column="25" selection-start="11688" selection-end="11688" vertical-scroll-proportion="0.5165877">
+        <state line="103" column="25" selection-start="3069" selection-end="3069" vertical-scroll-proportion="0.6494845">
           <folding>
             <element signature="e#63#101#0" expanded="true" />
             <element signature="e#2865#2882#0" expanded="true" />
