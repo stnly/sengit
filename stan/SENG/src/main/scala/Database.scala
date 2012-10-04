@@ -38,7 +38,7 @@ object Database extends Schema {
   val transactionTable = table[Transaction]("transaction")
   val purchaseTable = table[Purchase]("purchase")
   val reservedproductTable = table[ReservedProduct]("reservedproduct")
-  val activeproductTable = table[ActiveProducts]("activeproduct")
+  val activeproductTable = table[ActiveProduct]("activeproduct")
   val locationToProduct = oneToManyRelation(locationTable, productTable).via((l,p) => l.id === p.locationId )
 
   override def applyDefaultForeignKeyPolicy(foreignKeyDeclaration: ForeignKeyDeclaration)
@@ -78,6 +78,7 @@ object GUI extends SimpleSwingApplication{
         val location = LocationInput.text
         interface.addWarehouse(location)
         text = location + " added in successfully!"
+        println("added successfully")
       }
       reactions += {
         case ButtonClicked(_)| EditDone(_) => add()
@@ -131,7 +132,7 @@ object interface{
     inTransaction {
       val location1 = new Location(LocationName)
       location1.add()
-      //location1.setLocAsWarehouse()   //warehouse not working
+      //location1.setLocAsWarehouse()
     }
   }
 
@@ -197,10 +198,12 @@ object Main {
       val location3 = new Location("B")
       location3.add()
       //location2.setLocAsWarehouse()
-      val product1 = new Product("Milk", Calendar.getInstance().getTime, 10)
+      //val product1 = new Product("Milk", Calendar.getInstance().getTime, 10)
+      newProduct("Milk", location2.id, Calendar.getInstance().getTime, 10)
+      getActiveProductId("Milk")
       val product2 = new Product("Cheese", Calendar.getInstance().getTime, 10)
       val product3 = new Product("Bread", Calendar.getInstance().getTime, 10)
-      location2.products.associate(product1)
+      //location2.products.associate(product1)
       location2.products.associate(product2)
       location3.products.associate(product3)
 
@@ -208,6 +211,14 @@ object Main {
       //println(product1.locations.single.locationName)
 
       //relation query example
+
+      println("printing all locations")
+      val locations1 = from(locationTable)(a =>select (a)).toList
+      for (i <- locations1) {
+        println(i.locationName)
+      }
+
+
       val l = from(locationTable)(l=>
         where(l.id in
           from (productTable)(p=> where(l.id === p.id) select(p.id)))
@@ -229,7 +240,7 @@ object Main {
       //println(pro(2).productName)
       println(pro.length)
       println(productLineExists("Milk"))
-      println("Milk at location2: "+productStockAtLocation("Milk", location2.id))
+      println("Milk Quantity at location2: "+productStockAtLocation("Milk", location2.id))
       //for(s <- pro)
       //    println(s.productName)
       /*
@@ -312,14 +323,22 @@ object Main {
   // ============ PRODUCTS ============
   // ==================================
 
-  //def newProduct(productName: String, )
+  def newProduct(productName: String, locationId: Long, expiryDate : Date, price: BigDecimal):Long={
+    val newProduct = new Product(productName, expiryDate, price)
+    val data = locationTable.where(l => l.id === locationId).single
+    data.products.associate(newProduct) //productTable.insert(newProduct)
+    return newProduct.id
+  }
 
-   // productTable.insert(this)
-  //}
+  def printAllProducts() {
+    for(p <- {from (productTable) (t => select(t))}) {
+      println(p.id+" "+p.productName+" "+p.expiryDate+" "+p.price)
+    }
+  }
 
-  def productLineExists(productName: String) :Boolean =
+  def productLineExists(productName: String):Boolean = {
     return activeproductTable.exists(ap => ap.productName.matches(productName))
-
+  }
 
   def productStockAtLocation (productName: String, locationId: Long): Long = {
     val products = from(locationTable, productTable)((l,p)=>
@@ -327,14 +346,55 @@ object Main {
                     and l.id === p.locationId
                     and p.productName === productName)
                     select(p)).toList
-    var i = 0
     var count = 0
-    while (i < products.length){
-      count = count + 1
-      i = i + 1
+    for (i <- products){
+      count += 1
     }
     return count
   }
 
+  // ==================================
+  // ======== ACTIVE PRODUCTS =========
+  // ==================================
 
+  //TODO Convert to Squeryl
+
+  def newActiveProducts (productName: String, price: BigDecimal) :Long={
+    //addProductLocation
+    val ap = new ActiveProduct(productName, price)
+    return ap.id
+
+  }
+
+
+  def activeProductExists(productName: String): Boolean = {
+    return activeproductTable.exists(ap => ap.productName.matches(productName))
+  }
+
+  def getActiveProductId(productName: String) : Long = {
+    if (!activeProductExists(productName)) return -1
+    val n = activeproductTable.where(p =>p.productName === productName).single
+    println("The activeproduct id of product is " + n.id)
+    return n.id
+  }
+
+  // ==================================
+  // ============= USER ===============
+  // ==================================
+
+  // ==================================
+  // ============ LOCATION ============
+  // ==================================
+  import LocationType._
+  def newLocation(locationName: String, locationType: LocationType):Long={
+    val l = new Location(locationName, locationType)
+    locationTable.insert(l)
+    val w = new Warehouse(locationName)
+    warehouseTable.insert(w)
+    return w.id
+  }
+
+  // ==================================
+  // ========= TRANSACTIONS ===========
+  // ==================================
 }

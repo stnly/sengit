@@ -23,30 +23,9 @@ class Product (val productName: String, val locationId: Long, val expiryDate: Da
   lazy val locations: ManyToOne[Location] = locationToProduct.right(this)
   def this(productName: String, expiryDate: Date, price: BigDecimal) = this(productName,0, expiryDate, price)
 
-
-  def printAll() {
-    for(p <- {from (productTable) (t => select(t))}) {
-      println(p.id+" "+p.productName+" "+p.expiryDate+" "+p.price)
-    }
-  }
-
-  def getActiveProductId() : Long ={
-    val n = activeproductTable.where(p =>p.productName === this.productName).single
-    return n.id
-  }
-
-  /*
-  //TODO Convert to Squeryl
-  val addProductLocation = (locationName: String, productName: String, stock: Int) => {
-    require(productTable.exists(p => p.productName.matches(productName)))
-    require(locationTable.exists(p => p.locationName.matches(locationName)))
-
-  }
-  */
 }
 
-class ActiveProducts (val productName: String, var price: BigDecimal,var count: Long, var active: Boolean) extends Basic{
-  def this(productName: String) = this(productName, 0, 0, true)
+class ActiveProduct (val productName: String, var price: BigDecimal, var count: Long, var active: Boolean) extends Basic{
   def this(productName: String, price: BigDecimal) = this(productName, price, 0, true)
   def add(){
     activeproductTable.insert(this)
@@ -62,14 +41,7 @@ class ActiveProducts (val productName: String, var price: BigDecimal,var count: 
         set (ap.price := newPrice))
   }
 
-  def GetIdFromProduct():Long={
-    val n = activeproductTable.where(ap => ap.productName === this.productName).single
-    return n.id
-  }
 
-  def exist(): Boolean={
-    return activeproductTable.exists(ap => ap.productName.matches(this.productName))
-  }
 
   def productAtLocationExpired (locationId: Long) : List[Product] = {
     val products = from(locationTable, productTable)((l,p)=>
