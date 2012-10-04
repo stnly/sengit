@@ -4,14 +4,25 @@ import org.squeryl.PrimitiveTypeMode._
 import java.util.{Calendar, Date}
 import main.scala.classes.Database._
 import org.squeryl.dsl.ManyToOne
+/*
+ * Product Class
+ * Queries:
+ *
+ *
+ *
+ * Queries needed;
+ *
+ *
+ * Usage:
+ *
+ *
+ *
+ */
 
-//Product Class
 class Product (val productName: String, val locationId: Long, val expiryDate: Date, var price: BigDecimal) extends Basic{
   lazy val locations: ManyToOne[Location] = locationToProduct.right(this)
   def this(productName: String, expiryDate: Date, price: BigDecimal) = this(productName,0, expiryDate, price)
-  val add = () => {
-    productTable.insert(this)
-  }
+
 
   def printAll() {
     for(p <- {from (productTable) (t => select(t))}) {
@@ -34,9 +45,9 @@ class Product (val productName: String, val locationId: Long, val expiryDate: Da
   */
 }
 
-class ActiveProducts (val productName: String, var price: BigDecimal, var active: Boolean) extends Basic{
-  def this(productName: String) = this(productName, 0, true)
-  def this(productName: String, price: BigDecimal) = this(productName, price, true)
+class ActiveProducts (val productName: String, var price: BigDecimal,var count: Long, var active: Boolean) extends Basic{
+  def this(productName: String) = this(productName, 0, 0, true)
+  def this(productName: String, price: BigDecimal) = this(productName, price, 0, true)
   def add(){
     activeproductTable.insert(this)
   }
@@ -59,4 +70,15 @@ class ActiveProducts (val productName: String, var price: BigDecimal, var active
   def exist(): Boolean={
     return activeproductTable.exists(ap => ap.productName.matches(this.productName))
   }
+
+  def productAtLocationExpired (locationId: Long) : List[Product] = {
+    val products = from(locationTable, productTable)((l,p)=>
+      where(l.id === locationId
+        and l.id === p.locationId
+        and p.productName === this.productName)
+        //check expiry date gt getCalendar.getTime()
+        select(p))
+    return products.toList
+  }
+
 }

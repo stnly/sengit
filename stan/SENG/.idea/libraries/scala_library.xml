@@ -4,9 +4,6 @@
       <root url="jar:///usr/share/scala/lib/scala-library.jar!/" />
       <root url="jar:///usr/share/scala/lib/scala-swing.jar!/" />
       <root url="jar:///usr/share/scala/lib/scala-dbc.jar!/" />
-      <root url="jar://C:/Program Files/scala/lib/scala-dbc.jar!/" />
-      <root url="jar://C:/Program Files/scala/lib/scala-swing.jar!/" />
-      <root url="jar://C:/Program Files/scala/lib/scala-library.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

@@ -5,7 +5,7 @@ import org.squeryl.PrimitiveTypeMode._
 
 //added active field  for remove
 class User (val name: String, var userType: UserType, val active: Boolean) extends Basic {
-  def this(name: String,userType: UserType) = this(name, userType, true)
+  def this() = this("", UserType.admin, true)
 
   def add (){
     require(!userTable.exists(u => u.name.matches(this.name)))

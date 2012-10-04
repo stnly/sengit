@@ -131,7 +131,7 @@ object interface{
     inTransaction {
       val location1 = new Location(LocationName)
       location1.add()
-      location1.setLocAsWarehouse()
+      //location1.setLocAsWarehouse()   //warehouse not working
     }
   }
 
@@ -161,13 +161,14 @@ object interface{
 }
 
 object Main {
+  import Database._
+  import org.squeryl.SessionFactory
   def main(args: Array[String]) {
-    import Database._
-    import org.squeryl.SessionFactory
+
          Class.forName("org.h2.Driver");
     SessionFactory.concreteFactory = Some(()=>
       Session.create(
-        java.sql.DriverManager.getConnection("jdbc:h2:~/example", "sa", ""),
+        java.sql.DriverManager.getConnection("jdbc:h2:~/PointOfSales", "sa", ""),
         new H2Adapter)
     )
 
@@ -177,26 +178,32 @@ object Main {
       create
       printDdl
 
-      /*val user1 = new User("test",UserType.manager, false )
+      val user1 = new User("test",UserType.manager, false )
       user1.add()
-      //userTable.insert(new User("admin",UserType.admin, true))
-      //userTable.insert(new User("Stan",UserType.clerk, true))
-      //userTable.insert(new User("Daniel",UserType.manager, true))
-      //userTable.insert(new User("Mike",UserType.manager, true))
+      userTable.insert(new User("admin",UserType.admin, true))
+      userTable.insert(new User("Stan",UserType.clerk, true))
+      userTable.insert(new User("Daniel",UserType.manager, true))
+      userTable.insert(new User("Mike",UserType.manager, true))
 
       println("user 1 is a manager " + user1.isManager())
 
-      val query = userTable.where(a=> a.userType === UserType.manager)
-      for (q <- query) {
-        println(q.id+" "+q.name+" "+q.userType)
-      }*/
+      val query = userTable.where(a=> a.userType === UserType.manager).toList
+
+      println(query(2).name)
+
 
       val location2 = new Location("A")
       location2.add()
+      val location3 = new Location("B")
+      location3.add()
       //location2.setLocAsWarehouse()
-      val product1 = new Product("String", Calendar.getInstance().getTime, 10)
+      val product1 = new Product("Milk", Calendar.getInstance().getTime, 10)
+      val product2 = new Product("Cheese", Calendar.getInstance().getTime, 10)
+      val product3 = new Product("Bread", Calendar.getInstance().getTime, 10)
       location2.products.associate(product1)
-      product1.add()
+      location2.products.associate(product2)
+      location3.products.associate(product3)
+
 
       //println(product1.locations.single.locationName)
 
@@ -205,8 +212,8 @@ object Main {
         where(l.id in
           from (productTable)(p=> where(l.id === p.id) select(p.id)))
         select(l)
-      ).single
-      println(l.locationName)
+      )
+      //println(l.locationName)
 
       //join example
       //from(locationTable, productTable)((l,p)=>
@@ -214,9 +221,17 @@ object Main {
       //    select(p))
 
       val pro =from(locationTable, productTable)((l,p)=>
-        where(l.locationType === LocationType.location and l.id === p.locationId)
+        where(l.id === location2.id and l.locationType === LocationType.location and l.id === p.locationId)
           select(p)).toList
-      println(pro)
+
+      println(pro(0).productName)
+      println(pro(1).productName)
+      //println(pro(2).productName)
+      println(pro.length)
+      println(productLineExists("Milk"))
+      println("Milk at location2: "+productStockAtLocation("Milk", location2.id))
+      //for(s <- pro)
+      //    println(s.productName)
       /*
 
 
@@ -292,4 +307,34 @@ object Main {
             */
     }
   }
+
+  // ==================================
+  // ============ PRODUCTS ============
+  // ==================================
+
+  //def newProduct(productName: String, )
+
+   // productTable.insert(this)
+  //}
+
+  def productLineExists(productName: String) :Boolean =
+    return activeproductTable.exists(ap => ap.productName.matches(productName))
+
+
+  def productStockAtLocation (productName: String, locationId: Long): Long = {
+    val products = from(locationTable, productTable)((l,p)=>
+                    where(l.id === locationId
+                    and l.id === p.locationId
+                    and p.productName === productName)
+                    select(p)).toList
+    var i = 0
+    var count = 0
+    while (i < products.length){
+      count = count + 1
+      i = i + 1
+    }
+    return count
+  }
+
+
 }

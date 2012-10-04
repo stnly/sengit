@@ -46,6 +46,11 @@ class Location (val locationName: String, val locationType: LocationType) extend
     return 0   //warehouse id
   }
 
+  //def productsToRestock(productName: String) =
+  //  from(locationTable, productTable)(l,p) =>
+  //    where(l.id === this.id
+  //    and p.productName === productName)
+  //    select(p))
 
   def printAll() {
     for (l <- from(locationTable)(a => select(a))) {
