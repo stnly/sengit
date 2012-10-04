@@ -8,6 +8,7 @@ import org.squeryl._
 import adapters.H2Adapter
 import java.util.{Calendar, Date}
 import java.sql.Timestamp
+import swing._
 
 
 object UserType extends Enumeration {
@@ -45,6 +46,120 @@ object Database extends Schema {
   locationToProduct.foreignKeyDeclaration.constrainReference(onDelete cascade)
 }
 
+object GUI extends SimpleSwingApplication{
+  import event._
+  def top = new MainFrame {
+    interface.setup
+    title = "Add Location"
+    val LocationInput = new TextField
+    val LocationLabel = new Label{
+      text = "Location:"
+      border = Swing.EmptyBorder(5,5,5,5)
+    }
+    val LocationTypeInput = new TextField
+    val LocationType = new Label{
+      text = "Type:"
+      border = Swing.EmptyBorder(5,5,5,5)
+    }
+
+    val convertButton = new Button {
+      text = "Add Location"
+    }
+
+
+    val printButton = new Button {
+      text = "print"
+    }
+    val output = new Label{
+      text = ""
+      border = Swing.EmptyBorder(20,20,20,20)
+      listenTo(convertButton,LocationInput)
+      def add() {
+        val location = LocationInput.text
+        interface.addWarehouse(location)
+        text = location + " added in successfully!"
+      }
+      reactions += {
+        case ButtonClicked(_)| EditDone(_) => add()
+      }
+    }
+    contents = new GridPanel(4,4) {
+      contents.append(LocationLabel,LocationInput,LocationType,LocationTypeInput,convertButton,printButton,output)
+      border = Swing.EmptyBorder(10,10,10,10)
+    }
+
+  }
+}
+
+object interface{
+  import Database._
+  import org.squeryl.SessionFactory
+  import main.scala.classes._
+
+  def setup {
+
+    Class.forName("org.h2.Driver");
+    SessionFactory.concreteFactory = Some(()=>
+      Session.create(
+        java.sql.DriverManager.getConnection("jdbc:h2:~/example", "sa", ""),
+        new H2Adapter)
+    )
+    inTransaction {
+      drop  // Bad idea in production application!!!!
+      create
+      printDdl
+    }
+  }
+
+  /*def addUser (UserName:String)  {
+    inTransaction {
+      val user1 = new User(UserName,UserType.manager,false)
+      user1.add()
+    }
+  }*/
+
+  def printUser (UserID:Long) {
+    inTransaction {
+      val query = userTable.where(a=> a.id === UserID)
+      for (q <- query) {
+        println(q.id+" "+q.name+" "+q.userType)
+      }
+    }
+  }
+
+  def addWarehouse (LocationName:String) {
+    inTransaction {
+      val location1 = new Location(LocationName)
+      location1.add()
+      location1.setLocAsWarehouse()
+    }
+  }
+
+  def printWarehouse (LocationName:String) {
+    inTransaction {
+      val query = warehouseTable.where(a=> a.locationName === LocationName)
+      for (q <- query) {
+        println(q.id+" "+q.locationName)
+      }
+    }
+  }
+
+  def printWarehouse () {
+    inTransaction {
+      //val warehouse1 = new Warehouse()
+      //warehouse1.printAll()
+    }
+  }
+  /*def addStore (LocationName:String) {
+    inTransaction {
+      val location1 = new Location(LocationName)
+      location1.add()
+      location1.setLocAsStore()
+    }
+  }*/
+
+}
+
 object Main {
   def main(args: Array[String]) {
     import Database._
@@ -62,7 +177,7 @@ object Main {
       create
       printDdl
 
-      val user1 = new User("test",UserType.manager, false )
+      /*val user1 = new User("test",UserType.manager, false )
       user1.add()
       //userTable.insert(new User("admin",UserType.admin, true))
       //userTable.insert(new User("Stan",UserType.clerk, true))
@@ -74,7 +189,7 @@ object Main {
       val query = userTable.where(a=> a.userType === UserType.manager)
       for (q <- query) {
         println(q.id+" "+q.name+" "+q.userType)
-      }
+      }*/
 
       val location2 = new Location("A")
       location2.add()

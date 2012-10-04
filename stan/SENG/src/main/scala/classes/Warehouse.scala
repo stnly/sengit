@@ -23,6 +23,7 @@ class Warehouse(locationName:String, locationType:LocationType) extends Location
     new Warehouse()
   } */
 
+  //def this() = this("", LocationType.location)
   def this(locationName: String) = this(locationName, LocationType.location)
   override def printAll() {
     for (l <- from(warehouseTable)(a => select(a))) {
